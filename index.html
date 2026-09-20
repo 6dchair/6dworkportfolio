@@ -599,7 +599,7 @@
     height:auto;
   } */
   .thesis-gifs{
-    width:calc(100% + 200px);
+    width:100%;
     margin-left:0;
     margin-top:40px;
     margin-bottom:28px;
@@ -714,7 +714,11 @@
 
   /* =================== INTERNSHIP HIGHLIGHTS =============== */
   .internship-gifs{
-    width:calc(100% + 200px);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    /* width:calc(100% + 200px); */
     margin-left:0;
     margin-bottom:28px;
 
@@ -1155,7 +1159,7 @@
 
       
       <p class="thesis-body">
-        Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation.
+        Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI & Robotics Laboratory (AIRLAB).
       </p>
 
     </section>
@@ -1183,7 +1187,7 @@
 
         <div class="project-card">
 
-          <span class="idx">P.01</span>
+          <!-- <span class="idx">P.01</span> -->
            <div class="project-thumb">
             <img
               src="images/p5.png"
@@ -1220,8 +1224,8 @@
 
 
         <div class="project-card">
-
-          <span class="idx">P.02</span>
+<!-- 
+          <span class="idx">P.02</span> -->
           <div class="project-thumb">
             <img
               src="images/p8.png"
@@ -1257,9 +1261,49 @@
         </div>
 
 
+
+        <div class="project-card">
+<!-- 
+          <span class="idx">P.01</span> -->
+           <div class="project-thumb">
+            <img
+              src="images/p13.png"
+              alt="StateFlow: Automata Simulator">
+          </div>
+
+          <h3>
+            StateFlow: Automata Simulator
+          </h3>
+
+          <p>
+            Converts natural-language language descriptions into finite automata, then visualizes their state transitions and simulates user-provided input strings. It uses an AI-powered backend for language interpretation.
+
+          <div class="tag-row">
+
+            <span class="tag">Python</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">OpenAI</span>
+            <span class="tag">Vite</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <!-- <a href="#">Code ↗</a> -->
+            <!-- <a href="#">Demo ↗</a> -->
+            <a href="https://stateflow-automata-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+
+
         <div class="project-card">
 
-          <span class="idx">P.03</span>
+          <!-- <span class="idx">P.03</span> -->
           <div class="project-thumb">
             <img
               src="images/p9.png"
@@ -1271,7 +1315,7 @@
           </h3>
 
           <p>
-            The initial prototype used Python, OpenCV, and Haar Cascade for webcam-based face detection and blurring. The application was later redesigned as a browser-based implementation using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.
+            The initial prototype used Python, OpenCV, and Haar Cascade and was later redesigned using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.
           </p>
 
           <div class="tag-row">
@@ -1330,7 +1374,7 @@
 
           <li>
             <span class="label">Education</span>
-            <span class="value">X State University - Main Campus, 2026<br>
+            <span class="value">Caraga State University - Main Campus, 2026<br>
                 <strong>Cum Laude</strong>
             </span>
           </li>
@@ -1441,7 +1485,7 @@
     <footer>
 
       <div>
-        © 2026 Gracedave T.
+        © 2026 Gracedave T. (6dchair)
       </div>
 
       <div>
@@ -2190,10 +2234,14 @@
   const root = document.documentElement;
 
   const savedTheme = localStorage.getItem('theme');
-  if(savedTheme){
-    root.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '☀' : '☾';
-  }
+  // if(savedTheme){
+  //   root.setAttribute('data-theme', savedTheme);
+  //   themeToggle.textContent = savedTheme === 'dark' ? '☀' : '☾';
+  // }
+  const initialTheme = savedTheme || 'dark';
+
+  root.setAttribute('data-theme', initialTheme);
+  themeToggle.textContent = initialTheme === 'dark' ? '☀' : '☾';
 
   themeToggle.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark'
