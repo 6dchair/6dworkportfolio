@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>6dchair's Work Portfolio</title>
-
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -17,18 +15,13 @@
     --card:#FFFFFF;
     --ink:#17181C;
     --ink-dim:#6B6D74;
-    /* --accent:#B3261E; */
     --accent:#2563EB;
-    /* --accent-soft:rgba(179,38,30,0.08); */
     --accent-soft:rgba(37,99,235,0.08);
     --line:rgba(23,24,28,0.14);
     --line-strong:rgba(23,24,28,0.26);
 
-    /* --serif:'IBM Plex Mono', ui-monospace, monospace; */
-   --serif:'Inter', ui-sans-serif, sans-serif;   /* headings + body copy */
-    /* --sans:'IBM Plex Mono', ui-monospace, monospace; */
-    ---sans:'Inter', ui-sans-serif, sans-serif;
-    /* --mono:'IBM Plex Mono', ui-monospace, monospace; */
+    --serif:'Inter', ui-sans-serif, sans-serif;   /* headings + body copy */
+    --sans:'Inter', ui-sans-serif, sans-serif;
     --mono:'IBM Plex Mono', ui-monospace, monospace;  /* nav, tags, labels, footer only */
 
     --rail-w:88px;
@@ -305,20 +298,20 @@
 
   section{
     padding:120px 28px 40px;
-    max-width:1200px; /* 820px; */
+    max-width:1200px;
   }
 
   @media(min-width:1100px){
     section{
       padding:140px 48px 60px;
-      max-width:1400px; /* 1080px; */
+      max-width:1400px;
     }
   }
 
   @media(min-width:1500px){
     section{
       padding:140px 64px 60px;
-      max-width: 1500px; /* 1320px; */
+      max-width:1500px;
     }
   }
 
@@ -373,17 +366,10 @@
 
   #hero .abstract{
     margin-top:28px;
-    /* max-width:800px; 600px; */
     max-width:none;
     font-size:17px;
     color:var(--ink-dim);
   }
-
-  /* @media(min-width:1500px){
-    #hero .abstract{
-      max-width:680px;
-    }
-  } */
 
   .hero-grid{
     display:grid;
@@ -408,57 +394,47 @@
     height:100%;
     pointer-events:auto;
   }
-  /* .hero-shape{
-    width:min(70vw, 1100px);
-    height:min(35vw, 550px); 
-    pointer-events:auto; lets you still grab/drag it to spin
-  } */
 
-  /* .hero-shape-wrap{
-    width:100%;
+
+
+  /* ================= HERO STATUS ================= */
+
+  .status{
+    margin-top:22px;
     display:flex;
     align-items:center;
-    justify-content:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--ink);
   }
 
-  .hero-shape{
-    width:380px;
-    height:380px;
-    cursor:grab;
-  } */
-
-  /* .hero-shape:active{
-    cursor:grabbing;
+  .status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#22C55E;
+    box-shadow:0 0 0 4px rgba(34,197,94,0.18);
   }
 
-  .hero-shape canvas{
-    display:block;
-    width:100%;
-    height:100%;
+  /* ================= NAV CONTACT BUTTON ================= */
+
+  nav.primary-nav a.nav-cta{
+    color:var(--accent);
+    border:1px solid var(--accent);
+    padding:6px 14px;
   }
 
-  @media(min-width:800px){
-
-    .hero-grid{
-      grid-template-columns:minmax(0,1fr) 380px;
-      gap:48px;
-    }
-
-    .hero-shape{
-      width:380px;
-      height:380px;
-    }
-
+  nav.primary-nav a.nav-cta::before,
+  nav.primary-nav a.nav-cta::after{
+    content:none;
   }
 
-  @media(prefers-reduced-motion:reduce){
-
-    .hero-shape{
-      visibility:hidden;
-    }
-
-  } */
-
+  nav.primary-nav a.nav-cta:hover,
+  nav.primary-nav a.nav-cta.active{
+    background:var(--accent);
+    color:#fff;
+  }
 
   /* ================= CTA ================= */
 
@@ -549,9 +525,7 @@
   #thesis p{
     font-size:16px;
     color:var(--ink-dim);
-    /* max-width:900px; 640px; */
     max-width:none;
-
   }
 
   .contrib-list{
@@ -579,25 +553,6 @@
     padding-top:2px;
   }
 
-  /* .thesis-gifs{
-    width:100%;
-    margin:0 0 50px;
-    display:flex;
-    gap:0;
-    overflow:hidden;  
-  }
-
-  .thesis-gif{
-    flex:1 1 0;
-    min-width:0;
-    overflow:hidden;
-  }
-
-  .thesis-gif img{
-    display:block;
-    width:100%;
-    height:auto;
-  } */
   .thesis-gifs{
     width:100%;
     margin-left:0;
@@ -624,21 +579,35 @@
   /* ================= PROJECTS ================= */
 
   .project-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:14px;          /* room for the scrollbar */
     margin-top:8px;
   }
 
   .project-card{
+    flex:0 0 clamp(280px, 30vw, 380px);  /* fixed card width */
+    scroll-snap-align:start;
     background:var(--card);
+    border:1px solid var(--line);
     padding:26px;
     display:flex;
     flex-direction:column;
     gap:12px;
   }
+
+  /* slim, themed scrollbar */
+  .project-grid{
+    scrollbar-width:thin;
+    scrollbar-color:var(--line-strong) transparent;
+  }
+  .project-grid::-webkit-scrollbar{ height:6px; }
+  .project-grid::-webkit-scrollbar-thumb{ background:var(--line-strong); border-radius:3px; }
+  .project-grid::-webkit-scrollbar-track{ background:transparent; }
 
   .project-card .idx{
     font-family:var(--mono);
@@ -712,13 +681,48 @@
     object-fit: cover;
   }
 
+  /* carousel wrapper + right-edge arrow */
+  .project-carousel{
+    position:relative;
+  }
+
+  .scroll-btn{
+    position:absolute;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+    z-index:5;
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--mono);
+    font-size:18px;
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    color:var(--ink);
+    cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,0.18);
+    transition:border-color .2s ease, color .2s ease, opacity .2s ease;
+  }
+
+  .scroll-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+
+  .scroll-btn.hidden{
+    opacity:0;
+    pointer-events:none;
+  }
+
+
   /* =================== INTERNSHIP HIGHLIGHTS =============== */
   .internship-gifs{
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-
-    /* width:calc(100% + 200px); */
     margin-left:0;
     margin-bottom:28px;
 
@@ -744,7 +748,6 @@
   .about-grid{
     display:grid;
     gap:40px;
-    /* max-width:1200px; 960px; */
     max-width:none;
   }
 
@@ -805,16 +808,14 @@
     font-size:clamp(20px,3vw,28px);
     text-decoration:none;
     border-bottom:2px solid var(--accent);
-    transition:color .2s ease;   /* new — smooths the color change */
+    transition:color .2s ease;
   }
 
   .email-row a:hover{
-    /* color:var(--accent); */
     color:#2563EB;   /* blue on hover */
   }
 
   .email-row a:active{
-    /* color:var(--ink-dim); */
     color:#1D4ED8;   /* slightly darker blue while clicking */
   }
 
@@ -934,15 +935,9 @@
 
 <!-- ================= 3D 6d ================= -->
 
-        <div class="hero-shape-wrap">
-
-          <div
-            class="hero-shape"
-            id="heroShape"
-            aria-hidden="true">
-          </div>
-
-        </div>
+<div class="hero-shape-wrap">
+  <div class="hero-shape" id="heroShape" aria-hidden="true"></div>
+</div>
 
 <header id="siteHeader">
 
@@ -951,15 +946,15 @@
   </div>
 
   <nav class="primary-nav">
+    <a href="#projects" data-nav="projects">Projects</a>
     <a href="#thesis" data-nav="thesis">Thesis</a>
     <a href="#internship" data-nav="internship">Internship</a>
-    <a href="#projects" data-nav="projects">Projects</a>
     <a href="#about" data-nav="about">About Me</a>
-    <a href="#contact" data-nav="contact">Contact</a>
+    <a href="#contact" data-nav="contact" class="nav-cta">Contact</a>
   </nav>
 
   <div class="page-counter" id="pageCounter">
-    ( 00 / 04 )
+    ( 00 / 05 )
   </div>
 
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -979,16 +974,16 @@
 
       <div class="rail-fill" id="railFill"></div>
 
-      <div class="rail-dot" data-target="thesis" style="top:2%">
-        <span class="rail-label">01 Thesis</span>
+      <div class="rail-dot" data-target="projects" style="top:2%">
+        <span class="rail-label">01 Projects</span>
       </div>
 
-      <div class="rail-dot" data-target="internship" style="top:27%">
-        <span class="rail-label">02 Internship</span>
+      <div class="rail-dot" data-target="thesis" style="top:27%">
+        <span class="rail-label">02 Thesis</span>
       </div>
 
-      <div class="rail-dot" data-target="projects" style="top:51%">
-        <span class="rail-label">03 Projects</span>
+      <div class="rail-dot" data-target="internship" style="top:51%">
+        <span class="rail-label">03 Internship</span>
       </div>
 
       <div class="rail-dot" data-target="about" style="top:75%">
@@ -1024,12 +1019,22 @@
           </h1>
 
           <div class="role">
-            Software Development, Robotic Arm Research, Webots, Data Collection & Analysis
+            Software Development, Robotic Arm Research, Webots, Data Collection &amp; Analysis
           </div>
 
           <p class="abstract">
           I work across software development, robotics, and artificial intelligence: combining programming, hands-on experimentation, data collection, analysis, and data-driven evaluation to develop practical, technology-driven solutions.
           </p>
+
+          <div class="status">
+            <span class="status-dot"></span>Open to full-time roles &amp; research collaborations
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download Resume ↗</a>
+            <!-- <a class="btn" href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">GitHub ↗</a> -->
+            <!-- <a class="btn" href="#contact">Contact</a> -->
+          </div>
 
         </div>
 
@@ -1037,6 +1042,213 @@
 
     </section>
 
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects" class="reveal">
+
+      <div class="section-head">
+
+        <div class="kicker">
+          <span class="eyebrow">Projects</span>
+        </div>
+
+        <h2>
+          Selected Work
+        </h2>
+
+      </div>
+
+
+      <div class="project-carousel">
+
+      <button class="scroll-btn" id="projNext" aria-label="Scroll projects right">→</button>
+
+      <div class="project-grid">
+
+
+        <div class="project-card">
+
+          <div class="project-thumb">
+            <img
+              src="images/p5.png"
+              alt="Prototype Zero">
+          </div>
+
+          <h3>
+            Prototype Zero (p.0)
+          </h3>
+
+          <p>
+            A custom imperative programming language with a C-based compiler and browser-based IDE. The project includes lexical analysis, parsing, semantic processing, code generation, and an interactive web interface for writing and compiling p.0 programs.
+          </p>
+
+          <div class="tag-row">
+
+            <span class="tag">C</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Flex</span>
+            <span class="tag">Bison</span>
+            <span class="tag">React</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="https://prototype-0-compiler-ide.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-thumb">
+            <img
+              src="images/p12.png"
+              alt="6d CIMS: Customizable Inventory Mgt System">
+          </div>
+
+          <h3>
+            6d CIMS: Customizable Inventory Mgt System
+          </h3>
+
+          <p>
+           For orgs/warehouses to build their own inventory tables and fields instead of fitting its data into a fixed template. It tracks borrowed tools with partial returns, records consumed materials with attached proofs, and raises low-stock and overdue alerts. It runs offline as a web app or an Android app, with backup and restore.
+          </p>
+
+          <div class="tag-row">
+
+            <span class="tag">C</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Vite</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">SQLAlchemy</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Capacitor</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="https://6dcims.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-thumb">
+            <img
+              src="images/p11.png"
+              alt="StateFlow: Automata Simulator">
+          </div>
+
+          <h3>
+            StateFlow: Automata Simulator
+          </h3>
+
+          <p>
+            Converts natural-language descriptions into finite automata, then visualizes their state transitions and simulates user-provided input strings. It uses an AI-powered backend for language interpretation.
+          </p>
+
+          <div class="tag-row">
+
+            <span class="tag">Python</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">OpenAI</span>
+            <span class="tag">Vite</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="https://stateflow-automata-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-thumb">
+            <img
+              src="images/p8.png"
+              alt="3D Projectile Simulator">
+          </div>
+
+          <h3>
+            3D Projectile Simulator
+          </h3>
+
+          <p>
+            A browser-based 3D physics simulator for projectile motion, with adjustable launch parameters, real-time trajectory visualization, and interactive camera controls.
+          </p>
+
+          <div class="tag-row">
+
+            <span class="tag">JavaScript</span>
+            <span class="tag">Three.js</span>
+            <span class="tag">Cannon-es</span>
+            <span class="tag">lil-gui</span>
+            <span class="tag">Vite</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="https://first-lime-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-thumb">
+            <img
+              src="images/p9.png"
+              alt="Real-Time Face Anonymization">
+          </div>
+
+          <h3>
+            Real-Time Face Anonymization
+          </h3>
+
+          <p>
+            The initial prototype used Python, OpenCV, and Haar Cascade and was later redesigned using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.
+          </p>
+
+          <div class="tag-row">
+
+            <span class="tag">JavaScript</span>
+            <span class="tag">MediaPipe</span>
+            <span class="tag">Canvas API</span>
+            <span class="tag">Vite</span>
+
+          </div>
+
+          <div class="project-links">
+
+            <a href="https://face-blur-app-mini-project.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      </div><!-- /.project-carousel -->
+
+    </section>
 
     <!-- ================= THESIS ================= -->
 
@@ -1061,7 +1273,6 @@
 
       <p>
         Evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. Developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping.
-
       </p>
 
       <div class="thesis-gifs">
@@ -1107,13 +1318,13 @@
       <div class="cta-row">
 
         <a class="btn" href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&ouid=100281943988116773407&rtpof=true&sd=true"
-        target="blank"
+        target="_blank"
         rel="noopener noreferrer">
           Read Thesis (IDAP-formatted manuscript) ↗
         </a>
 
         <a class="btn" href="https://github.com/6dchair-uni/sim2sim-dp-soarm"
-        target="blank"
+        target="_blank"
         rel="noopener noreferrer">
           View Repository ↗
         </a>
@@ -1157,189 +1368,12 @@
         </div>
       </div>
 
-      
       <p class="thesis-body">
-        Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI & Robotics Laboratory (AIRLAB).
+        Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI &amp; Robotics Laboratory (AIRLAB).
       </p>
 
     </section>
 
-
-    <!-- ================= PROJECTS ================= -->
-
-    <section id="projects" class="reveal">
-
-      <div class="section-head">
-
-        <div class="kicker">
-          <span class="eyebrow">Projects</span>
-        </div>
-
-        <h2>
-          Selected Work
-        </h2>
-
-      </div>
-
-
-      <div class="project-grid">
-
-
-        <div class="project-card">
-
-          <!-- <span class="idx">P.01</span> -->
-           <div class="project-thumb">
-            <img
-              src="images/p5.png"
-              alt="Prototype Zero">
-          </div>
-
-          <h3>
-            Prototype Zero (p.0)
-          </h3>
-
-          <p>
-            A custom imperative programming language with a C-based compiler and browser-based IDE. The project includes lexical analysis, parsing, semantic processing, code generation, and an interactive web interface for writing and compiling p.0 programs.
-          </p>
-
-          <div class="tag-row">
-
-            <span class="tag">C</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Flex</span>
-            <span class="tag">Bison</span>
-            <span class="tag">React</span>
-
-          </div>
-
-          <div class="project-links">
-
-            <!-- <a href="#">Code ↗</a> -->
-            <!-- <a href="#">Demo ↗</a> -->
-            <a href="https://prototype-0-compiler-ide.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-card">
-<!-- 
-          <span class="idx">P.01</span> -->
-           <div class="project-thumb">
-            <img
-              src="images/p11.png"
-              alt="StateFlow: Automata Simulator">
-          </div>
-
-          <h3>
-            StateFlow: Automata Simulator
-          </h3>
-
-          <p>
-            Converts natural-language descriptions into finite automata, then visualizes their state transitions and simulates user-provided input strings. It uses an AI-powered backend for language interpretation.
-
-          <div class="tag-row">
-
-            <span class="tag">Python</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">React</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">OpenAI</span>
-            <span class="tag">Vite</span>
-
-          </div>
-
-          <div class="project-links">
-
-            <!-- <a href="#">Code ↗</a> -->
-            <!-- <a href="#">Demo ↗</a> -->
-            <a href="https://stateflow-automata-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-card">
-<!-- 
-          <span class="idx">P.02</span> -->
-          <div class="project-thumb">
-            <img
-              src="images/p8.png"
-              alt="3D Projectile Simulator">
-          </div>
-
-          <h3>
-            3D Projectile Simulator
-          </h3>
-
-          <p>
-            A browser-based 3D physics simulator for projectile motion, with adjustable launch parameters, real-time trajectory visualization, and interactive camera controls.
-          </p>
-
-          <div class="tag-row">
-
-            <span class="tag">JavaScript</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">Cannon-es</span>
-            <span class="tag">lil-gui</span>
-            <span class="tag">Vite</span>
-
-          </div>
-
-          <div class="project-links">
-<!-- 
-            <a href="#">Code ↗</a> -->
-            <a href="https://first-lime-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-
-
-          </div>
-
-        </div>
-
-
-
-
-        <div class="project-card">
-
-          <!-- <span class="idx">P.03</span> -->
-          <div class="project-thumb">
-            <img
-              src="images/p9.png"
-              alt="Real-Time Face Anonymization">
-          </div>
-
-          <h3>
-            Real-Time Face Anonymization
-          </h3>
-
-          <p>
-            The initial prototype used Python, OpenCV, and Haar Cascade and was later redesigned using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.
-          </p>
-
-          <div class="tag-row">
-
-            <span class="tag">JavaScript</span>
-            <span class="tag">MediaPipe</span>
-            <span class="tag">Canvas API</span>
-            <span class="tag">Vite</span>
-
-          </div>
-
-          <div class="project-links">
-
-            <!-- <a href="#">Code ↗</a> -->
-            <a href="https://face-blur-app-mini-project.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-
-            
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
 
     <!-- ================= ABOUT ================= -->
 
@@ -1359,7 +1393,6 @@
 
 
       <div class="about-grid">
-
 
         <div>
 
@@ -1386,7 +1419,7 @@
 
           <li>
             <span class="label">Focus</span>
-            <span class="value">Software Development / Robotic Manipulation / Imitation Learning / Data Collection & Analysis / Experimental Research</span>
+            <span class="value">Software Development / Robotic Manipulation / Imitation Learning / Data Collection &amp; Analysis / Experimental Research</span>
           </li>
 
           <li>
@@ -1398,14 +1431,13 @@
             <span class="label">Resume</span>
             <span class="value">
               <a href="dox/6dCV.pdf"
-                target="blank"
+                target="_blank"
                 rel="noopener noreferrer">
                 Download PDF ↗</a>
             </span>
           </li>
 
         </ul>
-
 
       </div>
 
@@ -1461,20 +1493,6 @@
           GitHub ↗
         </a>
 
-        <!-- <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn ↗
-        </a>
-
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer">
-          Google Scholar ↗
-        </a> -->
-
       </div>
 
     </section>
@@ -1509,48 +1527,26 @@
   const header = document.getElementById('siteHeader');
 
   window.addEventListener('scroll', () => {
-
-    header.classList.toggle(
-      'scrolled',
-      window.scrollY > 8
-    );
-
+    header.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive:true });
 
 
   /* ---------- SCROLLSPY ---------- */
 
   const sectionIds = [
+    'projects',
     'thesis',
     'internship',
-    'projects',
     'about',
     'contact'
   ];
 
-  const sections = sectionIds.map(
-    id => document.getElementById(id)
-  );
+  const sections = sectionIds.map(id => document.getElementById(id));
 
-  const navLinks =
-    document.querySelectorAll(
-      'nav.primary-nav a'
-    );
-
-  const railDots =
-    document.querySelectorAll(
-      '.rail-dot'
-    );
-
-  const railFill =
-    document.getElementById(
-      'railFill'
-    );
-
-  const pageCounter =
-    document.getElementById(
-      'pageCounter'
-    );
+  const navLinks = document.querySelectorAll('nav.primary-nav a');
+  const railDots = document.querySelectorAll('.rail-dot');
+  const railFill = document.getElementById('railFill');
+  const pageCounter = document.getElementById('pageCounter');
 
   let activeId = null;
 
@@ -1562,46 +1558,25 @@
     activeId = id;
 
     navLinks.forEach(a => {
-
-      a.classList.toggle(
-        'active',
-        a.dataset.nav === id
-      );
-
+      a.classList.toggle('active', a.dataset.nav === id);
     });
-
 
     railDots.forEach(d => {
-
-      d.classList.toggle(
-        'active',
-        d.dataset.target === id
-      );
-
+      d.classList.toggle('active', d.dataset.target === id);
     });
 
-
-    const idx =
-      sectionIds.indexOf(id);
-
+    const idx = sectionIds.indexOf(id);
 
     if(idx > -1){
 
       pageCounter.textContent =
-        `( ${String(idx + 1).padStart(2,'0')} / 04 )`;
-
+        `( ${String(idx + 1).padStart(2,'0')} / 05 )`;
 
       const activeDot =
-        document.querySelector(
-          `.rail-dot[data-target="${id}"]`
-        );
-
+        document.querySelector(`.rail-dot[data-target="${id}"]`);
 
       if(activeDot && railFill){
-
-        railFill.style.height =
-          activeDot.style.top;
-
+        railFill.style.height = activeDot.style.top;
       }
 
     }
@@ -1609,365 +1584,129 @@
   }
 
 
-  const spyObserver =
-    new IntersectionObserver(
-
-      (entries) => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            setActive(
-              entry.target.id
-            );
-
-          }
-
-        });
-
-      },
-
-      {
-        rootMargin:'-45% 0px -50% 0px',
-        threshold:0
-      }
-
-    );
-
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          setActive(entry.target.id);
+        }
+      });
+    },
+    {
+      rootMargin:'-45% 0px -50% 0px',
+      threshold:0
+    }
+  );
 
   sections.forEach(sec => {
-
     if(sec){
-
       spyObserver.observe(sec);
-
     }
-
   });
 
 
   /* ---------- REVEAL ON SCROLL ---------- */
 
-  const revealObserver =
-    new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold:0.12 }
+  );
 
-      (entries) => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              'in-view'
-            );
-
-            revealObserver.unobserve(
-              entry.target
-            );
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold:0.12
-      }
-
-    );
-
-
-  document
-    .querySelectorAll('.reveal')
-    .forEach(el => {
-
-      revealObserver.observe(el);
-
-    });
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
 
 
   /* ---------- RAIL DOT CLICK NAV ---------- */
 
   railDots.forEach(dot => {
-
-    dot.addEventListener(
-      'click',
-      () => {
-
-        const target =
-          document.getElementById(
-            dot.dataset.target
-          );
-
-        if(target){
-
-          target.scrollIntoView({
-            behavior:'smooth'
-          });
-
-        }
-
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if(target){
+        target.scrollIntoView({ behavior:'smooth' });
       }
-    );
-
+    });
   });
+
+
+  /* ---------- PROJECT CAROUSEL ARROWS ---------- */
+
+  const projGrid = document.querySelector('.project-grid');
+  const projNext = document.getElementById('projNext');
+
+  function projStep(){
+    const card = projGrid.querySelector('.project-card');
+    return card ? card.offsetWidth + 16 : 300;   // card width + gap
+  }
+
+  /* show the arrow only while there are projects left to the right */
+  function updateProjArrow(){
+    const remaining = projGrid.scrollWidth - projGrid.clientWidth - projGrid.scrollLeft;
+    projNext.classList.toggle('hidden', remaining <= 4);
+  }
+
+  if(projGrid && projNext){
+    projNext.addEventListener('click', () =>
+      projGrid.scrollBy({ left: projStep(), behavior: 'smooth' })
+    );
+    projGrid.addEventListener('scroll', updateProjArrow, { passive:true });
+    window.addEventListener('resize', updateProjArrow);
+    window.addEventListener('load', updateProjArrow);   // after images load
+    updateProjArrow();
+  }
 
 
   /* ---------- COPY EMAIL ---------- */
 
-  const copyBtn =
-    document.getElementById(
-      'copyEmailBtn'
-    );
+  const copyBtn = document.getElementById('copyEmailBtn');
+  const emailLink = document.getElementById('emailLink');
 
-  const emailLink =
-    document.getElementById(
-      'emailLink'
-    );
+  copyBtn.addEventListener('click', async () => {
 
+    const email = emailLink.textContent.trim();
 
-  copyBtn.addEventListener(
-    'click',
-    async () => {
-
-      const email =
-        emailLink.textContent.trim();
-
-
-      try{
-
-        await navigator.clipboard.writeText(
-          email
-        );
-
-        copyBtn.textContent =
-          'Copied';
-
-
-        setTimeout(() => {
-
-          copyBtn.textContent =
-            'Copy';
-
-        }, 1600);
-
-
-      }catch(err){
-
-        copyBtn.textContent =
-          'Copy failed';
-
-
-        setTimeout(() => {
-
-          copyBtn.textContent =
-            'Copy';
-
-        }, 1600);
-
-      }
-
+    try{
+      await navigator.clipboard.writeText(email);
+      copyBtn.textContent = 'Copied';
+      setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1600);
+    }catch(err){
+      copyBtn.textContent = 'Copy failed';
+      setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1600);
     }
-  );
+
+  });
 
 
-  /* ---------- HERO SHAPE: LITERAL EXTRUDED 3D "6d" TEXT ---------- */
+  /* ---------- HERO SHAPE COLOR HELPERS ---------- */
 
-  // function initHeroShape(){
+  let heroShapeMaterials = []; // filled in by initHeroShape when it builds the shape
 
-  //   const container = document.getElementById('heroShape');
-  //   if(!container || typeof THREE === 'undefined') return;
+  function currentInkColor(){
+    const val = getComputedStyle(document.documentElement)
+      .getPropertyValue('--ink').trim();
+    return val || '#17181C';
+  }
 
-  //   const reduceMotion =
-  //     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function updateHeroShapeColor(){
+    const color = new THREE.Color(currentInkColor());
+    heroShapeMaterials.forEach(mat => {
+      mat.color = color;
+    });
+  }
 
-  //   const scene = new THREE.Scene();
-  //   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-  //   camera.position.z = 6;
 
-  //   const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
-  //   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  //   container.appendChild(renderer.domElement);
-
-  //   const group = new THREE.Group();
-  //   scene.add(group);
-
-  //   /* ---- interaction: drag with mouse or touch to spin the "6d"
-  //      mesh — rotation direction and speed track the drag directly.
-  //      Motion never fully stops: on release, velocity eases back
-  //      toward a steady idle spin rather than freezing. Pointer
-  //      Events cover mouse, touch, and pen with one set of handlers. ---- */
-  //   let isDragging = false;
-  //   let prevX = 0, prevY = 0;
-
-  //   const baseline = { x: 0, y: 0.012 };  // steady idle spin
-  //   const velocity = { x: 0, y: 0.012 };  // current spin, driven by drag
-  //   const DRAG_SENSITIVITY = 0.012;
-  //   const EASE_BACK = 0.02; // how quickly it settles toward baseline after release
-
-  //   container.style.touchAction = 'none'; // stop touch-drag from scrolling the page
-
-  //   function onPointerDown(e){
-  //     isDragging = true;
-  //     prevX = e.clientX;
-  //     prevY = e.clientY;
-  //     container.setPointerCapture && container.setPointerCapture(e.pointerId);
-  //   }
-
-  //   function onPointerMove(e){
-  //     if(!isDragging) return;
-  //     const dx = e.clientX - prevX;
-  //     const dy = e.clientY - prevY;
-  //     prevX = e.clientX;
-  //     prevY = e.clientY;
-  //     velocity.y = dx * DRAG_SENSITIVITY; // spin direction follows the drag
-  //     velocity.x = dy * DRAG_SENSITIVITY;
-  //   }
-
-  //   function onPointerUp(){
-  //     isDragging = false;
-  //   }
-
-  //   container.addEventListener('pointerdown', onPointerDown);
-  //   window.addEventListener('pointermove', onPointerMove);
-  //   window.addEventListener('pointerup', onPointerUp);
-  //   window.addEventListener('pointercancel', onPointerUp);
-
-  //   function resize(){
-  //     const size = container.clientWidth;
-  //     if(size === 0) return;
-  //     renderer.setSize(size, size);
-  //     camera.aspect = 1;
-  //     camera.updateProjectionMatrix();
-  //   }
-
-  //   resize();
-  //   window.addEventListener('resize', resize);
-
-  //   function animate(){
-  //     requestAnimationFrame(animate);
-  //     if(!reduceMotion){
-  //       if(!isDragging){
-  //         velocity.x += (baseline.x - velocity.x) * EASE_BACK;
-  //         velocity.y += (baseline.y - velocity.y) * EASE_BACK;
-  //       }
-  //       group.rotation.y += velocity.y;
-  //       group.rotation.x += velocity.x;
-  //     }
-  //     renderer.render(scene, camera);
-  //   }
-
-  //   animate();
-
-  //   /* ---- try real extruded 3D text first ---- */
-  //   function buildExtrudedText(font){
-
-  //     const opts = {
-  //       font: font,
-  //       size: 1.7,
-  //       height: 0.5,
-  //       curveSegments: 5,
-  //       bevelEnabled: true,
-  //       bevelThickness: 0.05,
-  //       bevelSize: 0.028,
-  //       bevelSegments: 1
-  //     };
-
-  //     const geoSix = new THREE.TextGeometry('6', opts);
-  //     const geoD = new THREE.TextGeometry('d', opts);
-
-  //     geoSix.computeBoundingBox();
-  //     geoD.computeBoundingBox();
-
-  //     // const matSix = new THREE.MeshBasicMaterial({
-  //     //   color: 0x000000,
-  //     //   wireframe: true
-  //     // });
-  //     // const matD = new THREE.MeshBasicMaterial({
-  //     //   color: 0x000000,
-  //     //   wireframe: true
-  //     // });
-
-  //     const themeColor = new THREE.Color(currentInkColor());
-
-  //     const matSix = new THREE.MeshBasicMaterial({
-  //       color: themeColor,
-  //       wireframe: true
-  //     });
-  //     const matD = new THREE.MeshBasicMaterial({
-  //       color: themeColor,
-  //       wireframe: true
-  //     });
-
-  //     heroShapeMaterials.push(matSix, matD); // ← new line, register so updateHeroShapeColor() can reach them
-
-  //     const meshSix = new THREE.Mesh(geoSix, matSix);
-  //     const meshD = new THREE.Mesh(geoD, matD);
-
-  //     const sixWidth = geoSix.boundingBox.max.x - geoSix.boundingBox.min.x;
-  //     const gap = 0.14;
-
-  //     meshSix.position.x = 0;
-  //     meshD.position.x = sixWidth + gap;
-
-  //     group.add(meshSix);
-  //     group.add(meshD);
-
-  //     /* center the whole "6d" wordmark on its own pivot */
-  //     const totalWidth = sixWidth + gap +
-  //       (geoD.boundingBox.max.x - geoD.boundingBox.min.x);
-  //     const totalHeight = geoSix.boundingBox.max.y - geoSix.boundingBox.min.y;
-
-  //     group.children.forEach(m => {
-  //       m.position.x -= totalWidth / 2;
-  //       m.position.y -= totalHeight / 2;
-  //     });
-  //   }
-
-  //   /* ---- fallback: canvas-drawn "6d" on a plane, in case the
-  //      font can't load (offline, blocked CDN, etc.) ---- */
-  //   function buildFallbackText(){
-
-  //     const canvas = document.createElement('canvas');
-  //     canvas.width = 512;
-  //     canvas.height = 512;
-  //     const ctx = canvas.getContext('2d');
-  //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //     ctx.font = '700 300px "IBM Plex Sans", Arial, sans-serif';
-  //     ctx.textAlign = 'center';
-  //     ctx.textBaseline = 'middle';
-  //     ctx.lineWidth = 4;
-  //     ctx.strokeStyle = 'currentInkColor';
-  //     ctx.strokeText('6', canvas.width * 0.38, canvas.height / 2);
-  //     ctx.strokeText('d', canvas.width * 0.68, canvas.height / 2);
-
-  //     const texture = new THREE.CanvasTexture(canvas);
-  //     const mat = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-  //     const plane = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 3.2), mat);
-  //     group.add(plane);
-  //   }
-
-  //   if(typeof THREE.FontLoader === 'function' && typeof THREE.TextGeometry === 'function'){
-
-  //     const loader = new THREE.FontLoader();
-
-  //     loader.load(
-  //       'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json',
-  //       (font) => buildExtrudedText(font),
-  //       undefined,
-  //       () => buildFallbackText()
-  //     );
-
-  //   } else {
-  //     buildFallbackText();
-  //   }
-  // }
+  /* ---------- HERO SHAPE: EXTRUDED 3D "6dchair" TEXT ---------- */
 
   function initHeroShape(){
 
-    const container = document.getElementById('heroShape'); // kept your existing ID
+    const container = document.getElementById('heroShape');
     if(!container || typeof THREE === 'undefined') return;
 
     const reduceMotion =
@@ -1982,12 +1721,10 @@
     container.appendChild(renderer.domElement);
 
     const group = new THREE.Group();
-    // group.scale.set(2.6, 2.6, 2.6);
     group.scale.set(1.6, 1.6, 1.6);
     scene.add(group);
 
-    /* ---- interaction: drag with mouse/touch to spin, eases back to
-      idle baseline on release (restored from your existing version) ---- */
+    /* drag with mouse/touch to spin, eases back to idle baseline on release */
     let isDragging = false;
     let prevX = 0, prevY = 0;
 
@@ -2051,83 +1788,6 @@
 
     animate();
 
-    // function buildExtrudedText(font){
-
-    //   const opts = {
-    //     font: font,
-    //     size: 1.7,
-    //     height: 0.5,
-    //     curveSegments: 18,      // denser curve tessellation
-    //     bevelEnabled: true,
-    //     bevelThickness: 0.06,
-    //     bevelSize: 0.032,
-    //     bevelSegments: 5        // denser bevel edges
-    //   };
-
-    //   const geoSix = new THREE.TextGeometry('6', opts);
-    //   const geoD = new THREE.TextGeometry('d', opts);
-
-    //   geoSix.computeBoundingBox();
-    //   geoD.computeBoundingBox();
-
-    //   /* theme-aware color, restored from earlier fix */
-    //   const themeColor = new THREE.Color(currentInkColor());
-
-    //   const matSix = new THREE.MeshBasicMaterial({ color: themeColor, wireframe: true });
-    //   const matD = new THREE.MeshBasicMaterial({ color: themeColor, wireframe: true });
-
-    //   heroShapeMaterials.push(matSix, matD);
-
-    //   const meshSix = new THREE.Mesh(geoSix, matSix);
-    //   const meshD = new THREE.Mesh(geoD, matD);
-
-    //   /* extra mesh density on the "d" leg (the vertical stem) */
-    //   {
-    //     const dMinX = geoD.boundingBox.min.x;
-    //     const dMaxX = geoD.boundingBox.max.x;
-    //     const dMinY = geoD.boundingBox.min.y;
-    //     const dMaxY = geoD.boundingBox.max.y;
-
-    //     const glyphWidth = dMaxX - dMinX;
-    //     const glyphHeight = dMaxY - dMinY;
-
-    //     const stemWidth = glyphWidth * 0.24;
-    //     const stemHeight = glyphHeight * 0.96;
-    //     const stemDepth = opts.height;
-
-    //     const stemCenterX = dMaxX - stemWidth * 0.55;
-    //     const stemCenterY = dMinY + glyphHeight * 0.52;
-
-    //     const stemGeo = new THREE.BoxGeometry(stemWidth, stemHeight, stemDepth, 5, 32, 6);
-    //     const stemMat = new THREE.MeshBasicMaterial({
-    //       color: themeColor, wireframe: true, transparent: true, opacity: 0.9
-    //     });
-
-    //     heroShapeMaterials.push(stemMat);
-
-    //     const stemMesh = new THREE.Mesh(stemGeo, stemMat);
-    //     stemMesh.position.set(stemCenterX, stemCenterY, opts.height / 2);
-    //     meshD.add(stemMesh);
-    //   }
-
-    //   const sixWidth = geoSix.boundingBox.max.x - geoSix.boundingBox.min.x;
-    //   const gap = 0.14;
-
-    //   meshSix.position.x = 0;
-    //   meshD.position.x = sixWidth + gap;
-
-    //   group.add(meshSix);
-    //   group.add(meshD);
-
-    //   const totalWidth = sixWidth + gap + (geoD.boundingBox.max.x - geoD.boundingBox.min.x);
-    //   const totalHeight = geoSix.boundingBox.max.y - geoSix.boundingBox.min.y;
-
-    //   group.children.forEach(m => {
-    //     m.position.x -= totalWidth / 2;
-    //     m.position.y -= totalHeight / 2;
-    //   });
-    // }
-
     function buildExtrudedText(font){
 
       const opts = {
@@ -2185,7 +1845,7 @@
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.lineWidth = 4;
-      ctx.strokeStyle = currentInkColor(); // theme-aware
+      ctx.strokeStyle = currentInkColor();
       ctx.strokeText('6', canvas.width * 0.38, canvas.height / 2);
       ctx.strokeText('d', canvas.width * 0.68, canvas.height / 2);
 
@@ -2211,34 +1871,13 @@
   initHeroShape();
 
 
-  /* ---------- HERO SHAPE COLOR HELPERS (new) ---------- */
-
-  let heroShapeMaterials = []; // filled in by initHeroShape when it builds the shape
-
-  function currentInkColor(){
-    const val = getComputedStyle(document.documentElement)
-      .getPropertyValue('--ink').trim();
-    return val || '#17181C';
-  }
-
-  function updateHeroShapeColor(){
-    const color = new THREE.Color(currentInkColor());
-    heroShapeMaterials.forEach(mat => {
-      mat.color = color;
-    });
-  }
-
-
+  /* ---------- THEME TOGGLE ---------- */
 
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
 
   const savedTheme = localStorage.getItem('theme');
-  // if(savedTheme){
-  //   root.setAttribute('data-theme', savedTheme);
-  //   themeToggle.textContent = savedTheme === 'dark' ? '☀' : '☾';
-  // }
-  const initialTheme = savedTheme || 'dark';
+  const initialTheme = savedTheme || 'light';
 
   root.setAttribute('data-theme', initialTheme);
   themeToggle.textContent = initialTheme === 'dark' ? '☀' : '☾';
