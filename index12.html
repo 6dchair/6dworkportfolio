@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6dchair's Work Portfolio</title>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'classic');}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--link:#00C;--vis:#551A8B;--pale:#FFFFCC;--gold:#FFCC33;--bd:#E0C040;--blue:#2A5DB0;--dim:#555;--tile:#fff;--line:#999}
+:root[data-theme="midnight"]{--bg:#0F111A;--ink:#DDE;--link:#6CF;--vis:#C9F;--pale:#22222E;--bd:#665500;--dim:#99A;--tile:#181A26;--line:#556}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:12px/1.4 Arial,Helvetica,sans-serif;padding:6px 10px 14px}
+a{color:var(--link)}a:visited{color:var(--vis)}
+img,video{max-width:100%;display:block}
+::selection{background:#FC3;color:#000}
+:focus-visible{outline:2px dotted var(--link);outline-offset:1px}
+#bg3d{position:fixed;inset:0;z-index:-1;opacity:.05;pointer-events:none}
+:root[data-theme="midnight"] #bg3d{opacity:.12}
+#heroShape{width:100%;height:100%;pointer-events:auto}
+.btn,.btn:visited{display:inline-block;font:bold 11px Arial,sans-serif;color:#000;text-decoration:none;cursor:pointer;padding:2px 10px;border:1px solid #666;border-radius:3px;background:linear-gradient(#fff,#d6d6d6)}
+.btn:active{background:linear-gradient(#bbb,#eee)}
+
+/* header */
+.hd{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:space-between;margin-bottom:8px}
+.logo{font:600 56px/1 Fredoka,'Arial Rounded MT Bold',Arial,sans-serif;letter-spacing:-.05em}
+.logo span:nth-child(5n+1){color:#E53238}.logo span:nth-child(5n+2){color:#0064D2}.logo span:nth-child(5n+3){color:#F5AF02}.logo span:nth-child(5n+4){color:#86B817}.logo span:nth-child(5n){color:#E53238}
+.tag{font-size:10px;font-weight:bold;color:var(--link);margin-top:2px}
+.rt{text-align:right}
+.mini{font-size:11px;margin-bottom:4px}
+.tabs{display:flex;gap:2px;justify-content:flex-end;flex-wrap:wrap}
+.tabs a,.tabs a:visited{font:bold 12px Arial;color:#000;text-decoration:none;padding:3px 10px;border:1px solid #555;border-bottom:0;border-radius:6px 6px 0 0;background:linear-gradient(#fff,#cfcfcf)}
+.tabs a:hover{background:var(--gold)}
+.srch{background:var(--pale);border:1px solid var(--bd);padding:4px 10px;margin-top:3px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;color:#000}
+.srch b{font-size:14px;color:#000}
+.srch input{width:200px;max-width:100%;border:2px inset #888;padding:1px 3px;font:12px Arial}
+.mode{background:none;border:0;color:var(--link);text-decoration:underline;cursor:pointer;font:11px Arial}
+
+/* page grid */
+.pg{display:grid;grid-template-columns:190px minmax(0,1fr) 300px;gap:10px;align-items:start}
+@media(max-width:1000px){.pg{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}}
+.box{background:var(--pale);border:1px solid var(--bd);margin-bottom:8px;color:var(--ink)}
+.box h3{background:var(--gold);color:#000;font:bold 12px Arial;padding:2px 6px;border-bottom:1px solid var(--bd)}
+.box ul{list-style:none;padding:4px 6px}
+.box li{margin-bottom:2px;font-weight:bold}
+.box li.n{font-weight:400}
+.box .all{display:block;padding:0 6px 5px;font-weight:bold}
+.hl{background:var(--blue);color:#fff;font:bold 12px Arial;padding:2px 8px}
+
+/* welcome row */
+.wel{display:grid;grid-template-columns:1fr 200px;gap:8px;margin-bottom:8px}
+@media(max-width:700px){.wel{grid-template-columns:1fr}}
+.bl{background:var(--blue);color:#fff;padding:12px 14px;border:1px solid #124}
+.bl h1{font:bold 30px/1.05 Arial;margin-bottom:4px}
+.bl .r{font-size:12px;font-weight:bold;color:#FC3;margin-bottom:8px}
+.bl p{font-size:13px;margin-bottom:10px;max-width:80ch}
+.bl .btn{margin-right:4px}
+.live{background:var(--gold);border:1px solid var(--bd);padding:10px;text-align:center;color:#000;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.live .q{width:46px;height:46px;border-radius:50%;background:#C00;color:#fff;font:bold 30px/46px Arial;margin:0 auto;border:3px solid #fff;box-shadow:0 0 0 1px #900}
+.live b{font-size:13px}
+.live a{font-weight:bold}
+
+/* ticker */
+.tk{background:#000;color:#FC3;font:bold 12px 'Courier New',monospace;padding:3px 8px;margin-bottom:8px;white-space:nowrap;overflow:hidden}
+.tk span{display:inline-block;padding-left:100%;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.tk i{font-style:normal;color:#fff}
+
+/* project tiles */
+.sec{margin-bottom:10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px}
+.t{border:1px solid var(--line);background:var(--tile);display:flex;flex-direction:column}
+.t h4{color:#fff;font:bold 13px Arial;padding:3px 8px}
+.t .b{padding:6px 8px 8px;display:flex;flex-direction:column;gap:6px;flex:1}
+.t .th{aspect-ratio:16/9;border:1px solid var(--line);overflow:hidden}
+.t .th img{width:100%;height:100%;object-fit:cover}
+.t p{font-size:11px;flex:1}
+.t .tg{font-size:10px;color:var(--dim)}
+.t .tg a{font-weight:bold}
+.hide{display:none}
+#none{display:none;padding:10px;text-align:center;color:var(--dim)}
+.c0{background:#3366CC}.c1{background:#009933}.c2{background:#C98A00}.c3{background:#CC3333}.c4{background:#E8730C}.c5{background:#663399}
+
+/* thesis black panel */
+.look{background:#000;color:#fff;border:2px solid #039;padding:8px;margin-bottom:10px}
+.look h2{font:bold 24px/1.1 Arial;color:#FC3;letter-spacing:.06em;text-transform:uppercase}
+.look .sb{font-size:13px;font-weight:bold;color:#9CF;margin:3px 0 8px}
+.look p{font-size:12px;max-width:110ch;margin-bottom:8px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:700px){.cols{grid-template-columns:1fr}}
+.cols div{border-top:3px solid #FC3;padding-top:3px;font-size:12px}
+.cols div:nth-child(2){border-color:#F6C}.cols div:nth-child(3){border-color:#6C3}
+.cols b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.look a,.look a:visited{color:#6CF;font-weight:bold}
+.look .py{display:inline-block;font:bold 10px Arial;background:#FC3;color:#000;padding:0 6px;margin-bottom:6px}
+
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.shots figure{border:2px solid #FC3;padding:4px;background:#111}
+.shots img{width:100%;height:auto}
+.shots figcaption{font:bold 12px Arial;color:#9CF;padding-top:4px;text-align:center}
+@media(max-width:700px){.shots{grid-template-columns:1fr}}
+/* internship, about */
+.box.wide .in{padding:6px 8px 8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px;margin-bottom:6px}
+.vids video{width:100%;border:1px solid var(--line)}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:800px){.ab{grid-template-columns:1fr}}
+table.sp{border-collapse:collapse;width:100%;background:var(--tile)}
+.sp td{border:1px solid var(--bd);padding:3px 6px;vertical-align:top}
+.sp td:first-child{background:var(--gold);color:#000;font-weight:bold;white-space:nowrap}
+.em{font:bold 20px Arial;word-break:break-all}
+
+/* right column */
+.pop{background:var(--tile);border:1px solid var(--line);margin-bottom:8px;padding:4px;text-align:center;color:var(--ink)}
+.pop img{width:100%;height:auto}
+.pop a{display:block;font-weight:bold;margin-top:3px}
+
+/* footer */
+.ft{margin-top:14px;text-align:center;border-top:1px solid var(--line);padding-top:10px;font-size:11px}
+.bdg{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:10px}
+.bdg span{width:88px;height:31px;display:grid;place-items:center;text-align:center;font:bold 9px/1.1 Arial;border:1px solid #666;color:#fff}
+.ft p{margin-bottom:6px}
+.ft .dim{color:var(--dim)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tk span{animation:none;padding-left:0}}
+
+/* space for the moving 6dchair shape */
+.wel{grid-template-columns:1fr 300px 200px}
+.wel .box{margin:0}
+.shape{display:flex;flex-direction:column}
+.shape h3 span{float:right;font-weight:400;font-size:10px}
+.shape .cv{flex:1;min-height:180px;cursor:grab;touch-action:none;background:radial-gradient(circle at 50% 60%,rgba(232,32,138,.2),transparent 70%),var(--tile)}
+@media(max-width:1100px){.wel{grid-template-columns:1fr 1fr}.wel .bl{grid-column:1/-1}}
+@media(max-width:700px){.wel{grid-template-columns:1fr}}
+
+/* black outline on the header logo */
+.logo{letter-spacing:-.03em}
+.logo span{-webkit-text-stroke:5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 rgba(0,0,0,.25)}
+:root[data-theme="midnight"] .logo{filter:drop-shadow(0 0 1.5px #fff)}
+
+/* thesis videos: right column, made noticeable */
+.now{display:flex;flex-direction:column;gap:10px}
+.nh{display:flex;justify-content:space-between;align-items:center;background:#E53238;color:#fff;font:bold 14px Arial;letter-spacing:.05em;padding:4px 8px;border:1px solid #900}
+.new{background:#FC3;color:#000;font:bold 10px Arial;padding:0 5px;animation:blk 1s steps(2) infinite}
+@keyframes blk{50%{opacity:.2}}
+.nf{border:3px solid #FC3;background:#000;animation:gl 2s ease-in-out infinite alternate}
+@keyframes gl{from{box-shadow:0 0 0 2px #000,4px 4px 0 rgba(0,0,0,.35)}to{box-shadow:0 0 0 2px #000,0 0 16px 3px rgba(255,204,51,.95)}}
+.nf img{width:100%;height:auto;display:block}
+.nf figcaption{background:var(--blue);padding:3px 8px;font:bold 12px Arial}
+.nf figcaption a,.nf figcaption a:visited{color:#fff;text-decoration:none}
+.nf figcaption a:hover{text-decoration:underline}
+.ns{font-size:11px;color:var(--dim);text-align:center}
+@media(max-width:1000px){.now{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.nh,.ns{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.nf,.new{animation:none}}
+
+.cols b{text-transform:none;letter-spacing:0;font-size:14px}
+
+/* thesis section in the "featured research" box style */
+.look .ibox{border:3px ridge #aaa;background:#fff;padding:3px;margin:0 0 14px;box-shadow:0 0 0 1px #888}
+.look .bn{background:#000;text-align:center;padding:8px 6px}
+.look .bn h2{font:bold 28px Arial;letter-spacing:-.02em;text-transform:none;color:#F0F}
+.look .bn h2 span{color:#0FF}
+.look .bn .sb{font:bold 13px Arial;color:#8CF;margin:2px 0 6px}
+.look .tx{background:#fff;color:#000;padding:4px 6px;font-size:14px;line-height:1.35}
+.look .tx b{display:block}
+.look .tx a{color:#00C;font-weight:400}
+.look .tx a:visited{color:#551A8B}
+.look .item{margin:0 0 12px}
+.look .item b{display:block;font-size:14px;color:#FC3}
+.look .item .ind{margin-left:34px;font-size:13px}
+.look .item:last-child{margin-bottom:2px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+</head>
+<body>
+<div id="bg3d"><div id="heroShape" aria-hidden="true"></div></div>
+
+<header class="hd" id="top">
+  <div>
+    <div class="logo" aria-label="6dchair"><span>6</span><span>d</span><span>c</span><span>h</span><span>a</span><span>i</span><span>r</span></div>
+    <div class="tag">The World's Online Portfolio™</div>
+  </div>
+  <div class="rt">
+    <div class="mini"><a href="#top">home</a> | <a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">resume</a> | <a href="#cats">site map</a> | <a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">github</a> | <button class="mode" id="theme">night mode</button></div>
+    <nav class="tabs"><a href="#projects">Projects</a><a href="#thesis">Thesis</a><a href="#internship">Internship</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <div class="srch"><b>What are you looking for?</b><input id="q" type="text" placeholder="try: react, python, C" aria-label="Search projects"><button class="btn" id="go">Find It</button><a href="#q" id="smart"><small>Smart Search</small></a></div>
+  </div>
+</header>
+
+<div class="pg">
+
+<!-- LEFT -->
+<aside class="side">
+  <div class="box"><h3>Specialty Sites</h3><ul>
+    <li><a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&ouid=100281943988116773407&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Thesis Manuscript</a></li>
+    <li><a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">Thesis Repository</a></li>
+    <li><a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul></div>
+  <div class="box" id="cats"><h3>Categories</h3><ul>
+    <li><a href="#p1">6dMetrix: Sales Intelligence</a></li>
+    <li><a href="#p2">Prototype Zero (p.0)</a></li>
+    <li><a href="#p3">6dCIMS Inventory</a></li>
+    <li><a href="#p4">StateFlow Simulator</a></li>
+    <li><a href="#p5">3D Projectile Simulator</a></li>
+    <li><a href="#p6">Face Anonymization</a></li>
+    <li><a href="#thesis">Thesis</a></li><li><a href="#internship">Internship</a></li><li><a href="#about">About Me</a></li><li><a href="#contact">Contact</a></li></ul>
+    <a class="all" href="#projects">see all projects</a></div>
+  <div class="box"><h3>Languages</h3><ul><li class="n">C</li><li class="n">Python</li><li class="n">TypeScript</li><li class="n">JavaScript</li></ul></div>
+</aside>
+
+<!-- CENTER -->
+<main>
+
+<section class="wel">
+  <div class="bl">
+    <div class="r">Computer Scientist &amp; Programmer</div>
+    <h1>Gracedave</h1>
+    <div class="r">Software Development, Robotic Arm Research, Webots, Data Collection &amp; Analysis</div>
+    <p>I work across software development, robotics, and artificial intelligence: combining programming, hands-on experimentation, data collection, analysis, and data-driven evaluation to develop practical, technology-driven solutions.</p>
+    <a class="btn" href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download Resume ↗</a><a class="btn" href="#thesis">Thesis</a><a class="btn" href="#contact">Contact</a>
+  </div>
+  <div class="box shape"><h3>6dchair 3D <span>drag to spin</span></h3><div class="cv" id="shape3d" aria-hidden="true"></div></div>
+  <div class="live"><div class="q">?</div><b>Live Help</b><span>Open to full-time roles &amp; research collaborations</span><a href="mailto:gracedave.work@gmail.com">Email me »</a></div>
+</section>
+
+<div class="tk"><span><i>Python</i> | TypeScript | <i>React</i> | FastAPI | <i>PostgreSQL</i> | C | <i>Flex</i> | Bison | <i>Vite</i> | SQLite | <i>Three.js</i> | MediaPipe | <i>Webots</i> | Diffusion Policy</span></div>
+
+<section id="projects" class="sec">
+  <div class="hl">Projects: Selected Work</div>
+  <div class="tiles" id="grid" style="margin-top:6px">
+
+    <article class="t" id="p1"><h4 class="c0">6dMetrix: Sales Intelligence</h4><div class="b">
+      <div class="th"><img src="images/p13.png" alt="6dMetrix: Sales Intelligence"></div>
+      <p>For small businesses that want sales reports without rebuilding spreadsheets by hand. It imports sales from CSV with a row-by-row validation preview, and one sale can hold several line items. It tracks stock automatically as sales come in, flags low and out-of-stock products, and generates dashboards plus downloadable PDF and CSV reports. Products and categories are fully user-defined, so it fits any type of goods, from motor parts to farm produce. The company name is configurable.</p>
+      <div class="tg">Python · TypeScript · React · Vite · FastAPI · PostgreSQL · SQLAlchemy · SQLite · Recharts · ReportLab</div>
+      <div class="tg"><a href="https://6d-sales-auto-report.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+    <article class="t" id="p2"><h4 class="c1">Prototype Zero (p.0)</h4><div class="b">
+      <div class="th"><img src="images/p5.png" alt="Prototype Zero"></div>
+      <p>A custom imperative programming language with a C-based compiler and browser-based IDE. The project includes lexical analysis, parsing, semantic processing, code generation, and an interactive web interface for writing and compiling p.0 programs.</p>
+      <div class="tg">C · TypeScript · Flex · Bison · React</div>
+      <div class="tg"><a href="https://prototype-0-compiler-ide.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+    <article class="t" id="p3"><h4 class="c2">6dCIMS: Customizable Inventory Mgt System</h4><div class="b">
+      <div class="th"><img src="images/p12.png" alt="6d CIMS: Customizable Inventory Mgt System"></div>
+      <p>For orgs/warehouses to build their own inventory tables and fields instead of fitting its data into a fixed template. It tracks borrowed tools with partial returns, records consumed materials with attached proofs, and raises low-stock and overdue alerts. It runs offline as a web app or an Android app, with backup and restore.</p>
+      <div class="tg">C · TypeScript · React · Vite · FastAPI · SQLAlchemy · SQLite · Capacitor</div>
+      <div class="tg"><a href="https://6dcims.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+    <article class="t" id="p4"><h4 class="c3">StateFlow: Automata Simulator</h4><div class="b">
+      <div class="th"><img src="images/p11.png" alt="StateFlow: Automata Simulator"></div>
+      <p>Converts natural-language descriptions into finite automata, then visualizes their state transitions and simulates user-provided input strings. It uses an AI-powered backend for language interpretation.</p>
+      <div class="tg">Python · TypeScript · React · FastAPI · OpenAI · Vite</div>
+      <div class="tg"><a href="https://stateflow-automata-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+    <article class="t" id="p5"><h4 class="c4">3D Projectile Simulator</h4><div class="b">
+      <div class="th"><img src="images/p8.png" alt="3D Projectile Simulator"></div>
+      <p>A browser-based 3D physics simulator for projectile motion, with adjustable launch parameters, real-time trajectory visualization, and interactive camera controls.</p>
+      <div class="tg">JavaScript · Three.js · Cannon-es · lil-gui · Vite</div>
+      <div class="tg"><a href="https://first-lime-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+    <article class="t" id="p6"><h4 class="c5">Real-Time Face Anonymization</h4><div class="b">
+      <div class="th"><img src="images/p9.png" alt="Real-Time Face Anonymization"></div>
+      <p>The initial prototype used Python, OpenCV, and Haar Cascade and was later redesigned using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.</p>
+      <div class="tg">JavaScript · MediaPipe · Canvas API · Vite</div>
+      <div class="tg"><a href="https://face-blur-app-mini-project.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
+
+  </div>
+  <div id="none">No items match your search. Try another keyword.</div>
+</section>
+
+<section id="thesis" class="look">
+  <div class="ibox">
+    <div class="bn"><h2>THE <span>THESIS</span></h2><div class="sb">Sim-to-Sim Transfer of Low-Dimensional Diffusion Policy for SO-ARM100 Pick-and-Place Using Webots Demonstrations</div><span class="py">Python</span></div>
+    <div class="tx"><b>Introducing the Pipeline!</b>Evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. Developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</div>
+  </div>
+  <div class="item"><b>Build a pipeline without hardware!</b><div class="ind">Developed an accessible, reproducible Webots-based pipeline for diffusion-based robotic manipulation without requiring physical hardware.</div></div>
+  <div class="item"><b>Does the policy generalize?</b><div class="ind">Designed randomized environments to evaluate policy generalization across novel object/goal poses, workspace bounds, and robot states.</div></div>
+  <div class="item"><b>Still can't grasp it?</b><div class="ind">Identified grasp initiation as the primary failure point, revealing limitations of the 14D state representation for contact-rich manipulation.</div></div>
+</section>
+
+<section id="internship" class="box wide"><h3>Internship Highlights</h3><div class="in">
+  <div class="vids">
+    <video autoplay muted loop playsinline><source src="gifs/ih1-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih7-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih3-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih2-compressed2.mp4" type="video/mp4"></video>
+  </div>
+  <p>Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI &amp; Robotics Laboratory (AIRLAB).</p>
+</div></section>
+
+<section id="about" class="box wide"><h3>About Me</h3><div class="in"><div class="ab">
+  <p>Hi! I'm Gracedave, a Computer Science graduate with experience in software development, artificial intelligence, robotics, and experimental research. My work involves programming, data collection and analysis, robotic experimentation, and systematic evaluation of technical systems. I enjoy solving technical problems through structured experimentation and developing practical, testable solutions to real-world problems.</p>
+  <table class="sp">
+    <tr><td>Education</td><td>Caraga State University - Main Campus, 2026<br><strong>Cum Laude</strong></td></tr>
+    <tr><td>Languages</td><td>C, Python, TypeScript, JavaScript</td></tr>
+    <tr><td>Focus</td><td>Software Development / Robotic Manipulation / Imitation Learning / Data Collection &amp; Analysis / Experimental Research</td></tr>
+    <tr><td>Based in</td><td>Philippines</td></tr>
+    <tr><td>Resume</td><td><a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download PDF ↗</a></td></tr>
+  </table></div></div></section>
+
+<section id="contact" class="box wide"><h3>Contact: Reach me</h3><div class="in">
+  <p>Open to full-time roles and research collaborations. The fastest way to reach me is email — I'll get back to you as soon as I can. Thank you. Have a nice day! :)</p>
+  <p><a class="em" href="mailto:gracedave.work@gmail.com" id="emailLink">gracedave.work@gmail.com</a> &nbsp; <button class="btn" id="copyBtn">or Copy</button></p>
+  <p><a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">GitHub ↗</a></p>
+</div></section>
+
+</main>
+
+<!-- RIGHT -->
+<aside class="now">
+  <div class="nh"><span>NOW SHOWING</span><span class="new">NEW!</span></div>
+  <figure class="nf"><a href="#thesis"><img src="gifs/0.gif" alt="Thesis experiment 2"></a><figcaption><a href="#thesis">▶ Thesis experiment 2</a></figcaption></figure>
+  <figure class="nf"><a href="#thesis"><img src="gifs/teleop.gif" alt="Thesis experiment 1"></a><figcaption><a href="#thesis">▶ Thesis experiment 1</a></figcaption></figure>
+  <figure class="nf"><a href="#thesis"><img src="gifs/1.gif" alt="Thesis experiment 3"></a><figcaption><a href="#thesis">▶ Thesis experiment 3</a></figcaption></figure>
+  <div class="ns">SO-ARM100 pick-and-place in Webots</div>
+</aside>
+
+</div>
+
+<footer class="ft">
+  <div class="bdg"><span style="background:#0A246A">Made with NOTEPAD</span><span style="background:#080">Valid HTML 4.01</span><span style="background:#C60">Best at 800x600</span><span style="background:#639">Open Source</span><span style="background:#C00">Y2K COMPLIANT</span><span style="background:#000;color:#FC3">Get a Web Address</span></div>
+  <p><a href="#top">Home</a> | <a href="#projects">Projects</a> | <a href="#thesis">Thesis</a> | <a href="#internship">Internship</a> | <a href="#about">About Me</a> | <a href="#contact">Contact</a> | <a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Resume</a></p>
+  <p class="dim">Last updated: <span id="upd"></span></p>
+  <p class="dim">Copyright © 2026 Gracedave T. (6dchair). All Rights Reserved.</p>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s),root=document.documentElement;
+
+/* last updated */
+(function(){const d=new Date(),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],p=n=>String(n).padStart(2,'0');
+  const z=(new Intl.DateTimeFormat('en-US',{timeZoneName:'short'}).formatToParts(d).find(x=>x.type==='timeZoneName')||{}).value||'';
+  $('#upd').textContent=m[d.getMonth()]+'-'+p(d.getDate())+'-'+String(d.getFullYear()).slice(2)+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+z;})();
+
+/* find it */
+const cards=[...document.querySelectorAll('#grid .t')];
+function find(){const q=$('#q').value.trim().toLowerCase();let n=0;
+  cards.forEach(c=>{const ok=!q||c.textContent.toLowerCase().includes(q);c.classList.toggle('hide',!ok);if(ok)n++;});
+  $('#none').style.display=n?'none':'block';if(q)location.hash='#projects';}
+$('#go').addEventListener('click',find);
+$('#q').addEventListener('input',find);
+$('#q').addEventListener('keydown',e=>{if(e.key==='Enter')find();});
+$('#smart').addEventListener('click',e=>{e.preventDefault();$('#q').focus();});
+
+/* copy email */
+$('#copyBtn').addEventListener('click',async e=>{
+  try{await navigator.clipboard.writeText($('#emailLink').textContent.trim());e.target.textContent='Copied!';}catch(_){e.target.textContent='Copy failed';}
+  setTimeout(()=>e.target.textContent='Copy',1600);
+});
+
+/* faint 3D wireframe "6dchair" background */
+const mats=[],ink=()=>new THREE.Color(getComputedStyle(root).getPropertyValue('--ink').trim()||'#000');
+(function(){
+  const box=$('#heroShape');if(!box||typeof THREE==='undefined')return;
+  const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,.1,100);cam.position.z=12;
+  const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio||1,2));box.appendChild(r.domElement);
+  const g=new THREE.Group();g.scale.set(1.6,1.6,1.6);scene.add(g);
+  let drag=false,px=0,py=0;const v={x:0,y:.012};box.style.touchAction='none';
+  box.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;});
+  addEventListener('pointermove',e=>{if(!drag)return;v.y=(e.clientX-px)*.012;v.x=(e.clientY-py)*.012;px=e.clientX;py=e.clientY;});
+  addEventListener('pointerup',()=>drag=false);
+  const size=()=>{const w=box.clientWidth,h=box.clientHeight;if(!w||!h)return;r.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();};size();addEventListener('resize',size);
+  (function loop(){requestAnimationFrame(loop);if(!calm){if(!drag){v.x+=(0-v.x)*.02;v.y+=(.012-v.y)*.02;}g.rotation.y+=v.y;g.rotation.x+=v.x;}r.render(scene,cam);})();
+  if(THREE.FontLoader&&THREE.TextGeometry)new THREE.FontLoader().load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json',f=>{
+    const o={font:f,size:1.7,height:.5,curveSegments:18,bevelEnabled:true,bevelThickness:.06,bevelSize:.032,bevelSegments:5};let x=0,h=0;
+    for(const c of '6dchair'){const geo=new THREE.TextGeometry(c,o);geo.computeBoundingBox();const m=new THREE.MeshBasicMaterial({color:ink(),wireframe:true});mats.push(m);
+      const mesh=new THREE.Mesh(geo,m);mesh.position.x=x;g.add(mesh);x+=geo.boundingBox.max.x-geo.boundingBox.min.x+.14;h=geo.boundingBox.max.y-geo.boundingBox.min.y;}
+    g.children.forEach(m=>{m.position.x-=(x-.14)/2;m.position.y-=h/2;});
+  });
+})();
+
+/* 6dchair shape in its own box */
+const smats=[],lnk=()=>new THREE.Color(getComputedStyle(root).getPropertyValue('--link').trim()||'#00C');
+(function(){
+  const box=$('#shape3d');if(!box||typeof THREE==='undefined')return;
+  const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,2,.1,100);cam.position.z=12;
+  const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio||1,2));box.appendChild(r.domElement);
+  scene.add(new THREE.AmbientLight(0xffffff,.55));const dl=new THREE.DirectionalLight(0xffffff,.9);dl.position.set(3,5,8);scene.add(dl);
+  const g=new THREE.Group();scene.add(g);
+  let tw=9.5,drag=false,px=0,py=0;const v={x:0,y:.014};
+  box.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;});
+  addEventListener('pointermove',e=>{if(!drag)return;v.y=(e.clientX-px)*.012;v.x=(e.clientY-py)*.012;px=e.clientX;py=e.clientY;});
+  addEventListener('pointerup',()=>drag=false);addEventListener('pointercancel',()=>drag=false);
+  const size=()=>{const w=box.clientWidth,h=box.clientHeight;if(!w||!h)return;r.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();g.scale.setScalar(Math.min(1.7,9.94*cam.aspect*.9/tw));};
+  size();addEventListener('resize',size);
+  (function loop(){requestAnimationFrame(loop);if(!calm){if(!drag){v.x+=(0-v.x)*.03;v.y+=(.014-v.y)*.03;}g.rotation.y+=v.y;g.rotation.x+=v.x;}r.render(scene,cam);})();
+  if(THREE.FontLoader&&THREE.TextGeometry)new THREE.FontLoader().load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json',f=>{
+    const o={font:f,size:1.7,height:.6,curveSegments:14,bevelEnabled:true,bevelThickness:.08,bevelSize:.05,bevelSegments:4};let x=0,h=0;const mat=new THREE.MeshPhongMaterial({color:0xE8208A,shininess:90,specular:0xffffff});
+    for(const c of '6dchair'){const geo=new THREE.TextGeometry(c,o);geo.computeBoundingBox();const mesh=new THREE.Mesh(geo,mat);mesh.position.x=x;g.add(mesh);x+=geo.boundingBox.max.x-geo.boundingBox.min.x+.14;h=geo.boundingBox.max.y-geo.boundingBox.min.y;}
+    tw=x-.14;g.children.forEach(m=>{m.position.x-=tw/2;m.position.y-=h/2;});size();
+  });
+})();
+
+/* classic / midnight */
+const tb=$('#theme'),lab=()=>tb.textContent=root.dataset.theme==='midnight'?'classic mode':'night mode';
+lab();
+tb.addEventListener('click',()=>{
+  const n=root.dataset.theme==='midnight'?'classic':'midnight';root.dataset.theme=n;
+  try{localStorage.setItem('theme',n);}catch(e){}
+  lab();mats.forEach(m=>m.color=ink());smats.forEach(m=>m.color=lnk());
+});
+</script>
+</body>
+</html>
