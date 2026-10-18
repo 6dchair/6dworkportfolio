@@ -208,6 +208,42 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
 .nf.big figcaption{font-size:15px;padding:6px 10px}
 @media(min-width:1790px){.tiles{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1000px){.nrow,.nf.big{grid-column:1/-1}}
+
+
+.box h3 .jp-label {
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.box h3 .en-label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bl .jp-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #FC3;
+  margin-bottom: 2px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.jp-portfolio {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: rgb(18, 190, 46);
+  line-height: 1;
+}
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
@@ -218,12 +254,22 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
 
 <header class="hd" id="top">
   <div>
-    <div class="logo" aria-label="6dchair"><span>(aka)</span><span>6</span><span>d</span><span>c</span><span>h</span><span>a</span><span>i</span><span>r</span></div>
+    <div class="logo" aria-label="6dchair"><span>(aka)</span><span>6</span><span>d</span><span>c</span><span>h</span><span>a</span><span>i</span><span>r</span>
+    <div class="jp-portfolio" lang="ja">ポートフォリオ</div></div>
     <div class="tag">welcome! this serves as my portfolio as of now</div>
   </div>
   <div class="rt">
     <div class="mini"><a href="#top">home</a> | <a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">resume</a> | <a href="#cats">site map</a> | <a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">github0</a> | <a href="https://github.com/6dchair" target="_blank" rel="noopener noreferrer">github1</a> |<button class="mode" id="theme">night mode</button></div>
-    <nav class="tabs"><a href="#projects">Projects</a><a href="#thesis">Thesis</a><a href="#internship">Internship</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <!-- <nav class="tabs"><a href="#projects">Projects</a><a href="#thesis">Thesis</a><a href="#internship">Internship</a><a href="#about">About</a><a href="#contact">Contact</a></nav> -->
+    
+    <nav class="tabs">
+      <a href="#projects">Projects <small lang="ja">プロジェクト</small></a>
+      <a href="#thesis">Thesis <small lang="ja">論文</small></a>
+      <a href="#internship">Internship <small lang="ja">インターン</small></a>
+      <a href="#about">About <small lang="ja">自己紹介</small></a>
+      <a href="#contact">Contact <small lang="ja">連絡先</small></a>
+    </nav>
+
     <div class="srch"><b>What projects are you looking for?</b><input id="q" type="text" placeholder="try: react, python, C" aria-label="Search projects"><button class="btn" id="go">Find It</button><a href="#q" id="smart"><small>Smart Search</small></a></div>
   </div>
 </header>
@@ -255,19 +301,22 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
 
 <section class="wel">
   <div class="bl">
+    <div class="jp-label" lang="ja">コンピュータ・サイエンティスト</div>
     <div class="r">Computer Scientist &amp; Programmer</div>
     <h1>6dchair</h1>
     <div class="r">Software Development, Robotic Arm Research, Webots, Data Collection &amp; Analysis</div>
     <p>I work across software development, robotics, and artificial intelligence: combining programming, hands-on experimentation, data collection, analysis, and data-driven evaluation to develop practical, technology-driven solutions.</p>
-    <a class="btn" href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download Resume ↗</a><a class="btn" href="#thesis">Thesis</a><a class="btn" href="#contact">Contact</a>
+    <a class="btn" href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">履歴書 // Download Resume ↗</a><a class="btn" href="#thesis">論文 // Thesis</a><a class="btn" href="#contact">Contact</a>
   </div>
-  <div class="box shape"><h3>:>>> <span>drag to spin</span></h3><div class="cv" id="shape3d" aria-hidden="true"></div></div>
+  <div class="box shape"><h3>:>>>  ドラッグ <span>drag to spin</span></h3><div class="cv" id="shape3d" aria-hidden="true"></div></div>
   <div class="live"><div class="q">?</div><b>Opportunities</b><span>Open to full-time roles &amp; research collaborations</span><a href="mailto:6dchair.work@gmail.com">Email me »</a></div>
 </section>
 
 <div class="tk"><span><i>Python</i> | TypeScript | <i>React</i> | FastAPI | <i>PostgreSQL</i> | C | <i>Flex</i> | Bison | <i>Vite</i> | SQLite | <i>Three.js</i> | MediaPipe | <i>Robot Arm</i> | <i>Webots</i> | Diffusion Policy</span></div>
 
-<section id="projects" class="sec">
+<section id="projects" class="sec"><h3>
+    <span class="jp-label" lang="ja">プロジェクト</span>
+  </h3>
   <div class="hl">Projects: Selected Work</div>
   <div class="tiles" id="grid" style="margin-top:6px">
 
@@ -313,15 +362,19 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
 
 <section id="thesis" class="look">
   <div class="ibox">
-    <div class="bn"><h2>THE <span>THESIS</span></h2><div class="sb">Sim-to-Sim Transfer of Low-Dimensional Diffusion Policy for SO-ARM100 Pick-and-Place Using Webots Demonstrations</div><span class="py">Python</span></div>
-    <div class="tx"><b>Diffusion Policy is cool & amazing!</b>Evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. Developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</div>
+    <div class="bn"><h2>THESIS // 論文</span></h2><div class="sb">Sim-to-Sim Transfer of Low-Dimensional Diffusion Policy for SO-ARM100 Pick-and-Place Using Webots Demonstrations</div><span class="py">Python</span></div>
+    <div class="tx"><b>Diffusion Policy is cool & amazing!</b>For my undergrad thesis, I evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. I developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</div>
   </div>
   <div class="item"><b>Build a pipeline without hardware!</b><div class="ind">Developed an accessible, reproducible Webots-based pipeline for diffusion-based robotic manipulation without requiring physical hardware.</div></div>
   <div class="item"><b>Does the policy generalize?</b><div class="ind">Designed randomized environments to evaluate policy generalization across novel object/goal poses, workspace bounds, and robot states.</div></div>
   <div class="item"><b>Still can't grasp it?</b><div class="ind">Identified grasp initiation as the primary failure point, revealing limitations of the 14D state representation for contact-rich manipulation.</div></div>
 </section>
 
-<section id="internship" class="box wide"><h3>Internship Highlights</h3><div class="in">
+<section id="internship" class="box wide">
+  <h3>
+    <span class="jp-label" lang="ja">インターン</span>
+    <span class="en-label">Internship Highlights</span>
+  </h3><div class="in">
   <div class="vids">
     <video autoplay muted loop playsinline><source src="gifs/ih1-compressed2.mp4" type="video/mp4"></video>
     <video autoplay muted loop playsinline><source src="gifs/ih7-compressed2.mp4" type="video/mp4"></video>
@@ -331,7 +384,12 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
   <p>Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI &amp; Robotics Laboratory (AIRLAB).</p>
 </div></section>
 
-<section id="about" class="box wide"><h3>About Me</h3><div class="in"><div class="ab">
+<section id="about" class="box wide"><h3>
+    <span class="jp-label" lang="ja">自己紹介</span>
+    <span class="en-label">About Me</span>
+  </h3><div class="in"><div class="ab">
+
+  
   <p>Hi! I'm 6dchair, a Computer Science graduate with experience in software development, artificial intelligence, robotics, and experimental research. My work involves programming, data collection and analysis, robotic experimentation, and systematic evaluation of technical systems. I enjoy solving technical problems through structured experimentation and developing practical, testable solutions to real-world problems.</p>
   <table class="sp">
     <tr><td>Education</td><td>x State University - Main Campus, 2026<br><strong>Cum Laude</strong></td></tr>
@@ -341,7 +399,10 @@ body{padding-left:clamp(14px,3vw,48px);padding-right:clamp(14px,3vw,48px)}
     <tr><td>Resume</td><td><a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download PDF ↗</a></td></tr>
   </table></div></div></section>
 
-<section id="contact" class="box wide"><h3>Contact: Reach me</h3><div class="in">
+<section id="contact" class="box wide"><h3>
+    <span class="jp-label" lang="ja">連絡先</span>
+    <span class="en-label">Contact: Reach Me</span>
+  </h3><div class="in">
   <p>Open to full-time roles and research collaborations. The fastest way to reach me is email — I'll get back to you as soon as I can. Thank you. Have a nice day! :)</p>
   <p><a class="em" href="mailto:6dchair.work@gmail.com" id="emailLink">6dchair.work@gmail.com</a> &nbsp; <button class="btn" id="copyBtn">or Copy</button></p>
   <p><a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">GitHub-0 ↗</a><a href="https://github.com/6dchair" target="_blank" rel="noopener noreferrer">GitHub-1 ↗</a></p>
