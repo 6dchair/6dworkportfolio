@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6dchair's Work Portfolio</title>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F4F0;--card:#fff;--ink:#111827;--dim:#5B6472;--line:#DAD8D0;--teal:#0E7C7B;--coral:#E8466A;--navy:#0F1B2D;--soft:rgba(14,124,123,.09);
+--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--pad:clamp(16px,4vw,56px)}
+:root[data-theme="dark"]{--bg:#0B1017;--card:#121A25;--ink:#E7ECF3;--dim:#93A0B2;--line:#223043;--teal:#2DD4BF;--coral:#FF6B8B;--soft:rgba(45,212,191,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+img,video{max-width:100%;display:block}
+::selection{background:var(--coral);color:#fff}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.w{max-width:1480px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono)}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font:500 14px var(--mono);color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.brand b{color:var(--coral);font-weight:500}
+nav ul{display:flex;gap:4px;list-style:none;align-items:center;flex-wrap:wrap}
+nav a.l{font:500 13px var(--mono);color:var(--dim);text-decoration:none;padding:6px 10px;border-radius:6px}
+nav a.l:hover,nav a.l.on{color:var(--ink);background:var(--soft)}
+.tg{font:500 12px var(--mono);color:var(--ink);background:none;border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer}
+.tg:hover{border-color:var(--teal);color:var(--teal)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding:64px 0 40px}
+.eye{font:500 13px var(--mono);color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+h1{font:600 clamp(44px,7vw,92px)/.98 var(--sans);letter-spacing:-.035em;margin-bottom:16px}
+.role{font:400 14px/1.6 var(--mono);color:var(--dim);margin-bottom:18px;max-width:60ch}
+.abs{font-size:18px;max-width:58ch;margin-bottom:24px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.b1,.b2{font:500 14px var(--sans);text-decoration:none;padding:10px 18px;border-radius:8px;border:1px solid var(--ink);display:inline-block}
+.b1{background:var(--ink);color:var(--bg)}.b1:hover{background:var(--teal);border-color:var(--teal)}
+.b2{color:var(--ink);background:none;border-color:var(--line)}.b2:hover{border-color:var(--teal);color:var(--teal)}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font:400 13px var(--mono);color:var(--dim)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.vp{position:relative;background:var(--navy);border-radius:16px;overflow:hidden;min-height:clamp(300px,34vw,460px);border:1px solid var(--line);
+background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:32px 32px}
+#cv{position:absolute;inset:0;cursor:grab;touch-action:none}
+.vp span{position:absolute;font:400 11px var(--mono);color:#8FA3BF;letter-spacing:.06em;pointer-events:none}
+.vp .a{top:12px;left:14px}.vp .c{bottom:12px;left:14px}.vp .d{bottom:12px;right:14px}.vp .d i{font-style:normal}.vp .d i:nth-child(1){color:#FF6B8B}.vp .d i:nth-child(2){color:#2DD4BF}.vp .d i:nth-child(3){color:#7AA2FF}
+
+/* key figures */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:8px}
+.kpi div{background:var(--card);padding:22px 22px 18px}
+.kpi b{display:block;font:500 clamp(28px,3.4vw,44px)/1.05 var(--mono);letter-spacing:-.03em}
+.kpi b em{font-style:normal;color:var(--coral)}
+.kpi span{font:400 12px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.kn{font:400 12px var(--mono);color:var(--dim);margin:8px 2px 0}
+
+/* sections */
+.sec{padding:84px 0 0}
+.sh{margin-bottom:28px;display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
+.sh .eye{margin:0 0 6px}
+h2{font:600 clamp(26px,3.4vw,40px)/1.1 var(--sans);letter-spacing:-.025em}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 12px var(--mono);color:var(--dim);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:var(--teal)}
+.th{aspect-ratio:16/9;background:var(--line);overflow:hidden;border-bottom:1px solid var(--line)}
+.th img{width:100%;height:100%;object-fit:cover}
+.cb{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font:600 19px/1.25 var(--sans);letter-spacing:-.01em}
+.card p{font-size:14.5px;color:var(--dim);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tags span{font:400 11px var(--mono);color:var(--dim);border:1px solid var(--line);border-radius:5px;padding:1px 7px}
+.card .go{font:500 13px var(--mono);text-decoration:none}
+.hide{display:none}
+
+/* thesis */
+.thesis{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+@media(max-width:980px){.thesis,.hero,.about{grid-template-columns:1fr}.kpi{grid-template-columns:repeat(2,1fr)}}
+.tt{font:600 clamp(20px,2.2vw,27px)/1.25 var(--sans);letter-spacing:-.015em;margin-bottom:12px}
+.pill{display:inline-block;font:500 11px var(--mono);color:var(--teal);background:var(--soft);border-radius:5px;padding:1px 8px;margin-bottom:14px}
+.thesis p{max-width:68ch;margin-bottom:22px}
+.item{border-left:3px solid var(--teal);padding:2px 0 2px 16px;margin-bottom:18px}
+.item:nth-of-type(2){border-color:var(--coral)}.item:nth-of-type(3){border-color:#7AA2FF}
+.item b{display:block;font:600 16px var(--sans);margin-bottom:2px}
+.item div{font-size:15px;color:var(--dim)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:20px}
+.panel h4{font:500 12px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.chart{width:100%;height:auto;display:block}
+.chart text{font:12px var(--mono);fill:var(--dim)}
+.chart .v{font:500 18px var(--mono);fill:var(--ink)}
+.chart line{stroke:var(--line)}
+.bar{transform-box:fill-box;transform-origin:bottom;animation:gr 1.2s ease-out}
+@keyframes gr{from{transform:scaleY(0)}}
+.cap{font:400 12px/1.5 var(--mono);color:var(--dim);margin-top:8px}
+.media{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.media figure{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.media figure.big{grid-column:1/-1;border-color:var(--teal);border-width:2px}
+.media img{width:100%;height:auto}
+.media figcaption{font:500 12px var(--mono);color:var(--dim);padding:8px 12px;border-top:1px solid var(--line)}
+.media .big figcaption{font-size:13px;color:var(--ink)}
+
+/* internship */
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:20px}
+.vids video{width:100%;border-radius:10px;border:1px solid var(--line);background:#000}
+.int p{max-width:75ch}
+
+/* about + contact */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px)}
+.about p{max-width:62ch}
+dl{border-top:1px solid var(--line)}
+dl div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line)}
+dt{font:500 12px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+dd{text-align:right;font-size:15px}
+.mail{font:500 clamp(22px,3.4vw,40px)/1.2 var(--sans);letter-spacing:-.02em;color:var(--ink);text-decoration:none;border-bottom:3px solid var(--coral);word-break:break-all}
+.mail:hover{color:var(--teal)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:22px 0}
+footer{margin-top:96px;border-top:1px solid var(--line);padding:22px 0 36px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:400 12px var(--mono);color:var(--dim)}
+footer a{color:var(--dim)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar{animation:none}.card{transition:none}}
+
+/* ===== SHARP: square edges, hairlines, tighter type, engineering details ===== */
+:root{--bg:#FAFAF7;--ink:#0A0F1A;--line:#CFCDC4;--dim:#59616E}
+:root[data-theme="dark"]{--bg:#090D13;--card:#0F1620;--line:#25324A}
+body{font-size:15.5px;line-height:1.6}
+header{background:var(--bg);backdrop-filter:none;border-bottom:1px solid var(--ink)}
+:root[data-theme="dark"] header{border-bottom-color:var(--line)}
+.nav{height:56px}
+nav a.l{font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-radius:0;padding:19px 10px 17px}
+nav a.l:hover{background:none;color:var(--ink)}
+nav a.l.on{background:none;color:var(--ink);box-shadow:inset 0 -3px 0 var(--coral)}
+.tg{border-radius:0;text-transform:uppercase;letter-spacing:.08em;border-color:var(--ink)}
+.hero{padding:72px 0 44px}
+h1{font-size:clamp(52px,8.4vw,116px);letter-spacing:-.05em;line-height:.92}
+.eye{letter-spacing:.14em;font-size:12px}
+.role{border-left:2px solid var(--coral);padding-left:12px}
+.b1,.b2{border-radius:0;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:12px 20px}
+.b1:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+.b2{border-color:var(--ink)}
+.status{padding:6px 12px;border:1px solid var(--line)}
+.dot{border-radius:0;box-shadow:none;width:8px;height:8px}
+.vp{border-radius:0;border:1px solid var(--ink)}
+.vp::before{content:'';position:absolute;inset:10px;pointer-events:none;background:
+ linear-gradient(#8FA3BF,#8FA3BF) 0 0/16px 1px no-repeat,linear-gradient(#8FA3BF,#8FA3BF) 0 0/1px 16px no-repeat,
+ linear-gradient(#8FA3BF,#8FA3BF) 100% 0/16px 1px no-repeat,linear-gradient(#8FA3BF,#8FA3BF) 100% 0/1px 16px no-repeat,
+ linear-gradient(#8FA3BF,#8FA3BF) 0 100%/16px 1px no-repeat,linear-gradient(#8FA3BF,#8FA3BF) 0 100%/1px 16px no-repeat,
+ linear-gradient(#8FA3BF,#8FA3BF) 100% 100%/16px 1px no-repeat,linear-gradient(#8FA3BF,#8FA3BF) 100% 100%/1px 16px no-repeat}
+.vp .a{top:22px;left:26px}.vp .c{bottom:22px;left:26px}.vp .d{bottom:22px;right:26px}
+
+/* key figures */
+.kpi{border-radius:0;border-color:var(--ink);counter-reset:k;background:var(--ink)}
+:root[data-theme="dark"] .kpi{background:var(--line);border-color:var(--line)}
+.kpi div{counter-increment:k;position:relative;padding:30px 22px 20px;box-shadow:inset 0 3px 0 var(--teal)}
+.kpi div:nth-child(2){box-shadow:inset 0 3px 0 var(--coral)}
+.kpi div:nth-child(3){box-shadow:inset 0 3px 0 #7AA2FF}
+.kpi div:nth-child(4){box-shadow:inset 0 3px 0 var(--ink)}
+.kpi div::before{content:'FIG.' counter(k,decimal-leading-zero);position:absolute;top:12px;right:14px;font:400 10px var(--mono);color:var(--dim);letter-spacing:.1em}
+.kpi b{font-variant-numeric:tabular-nums;font-size:clamp(30px,3.6vw,48px)}
+.kpi span{font-size:11px;letter-spacing:.1em}
+
+/* section headers: heavy top rule */
+.sec{padding-top:96px}
+.sh{border-bottom:0;border-top:3px solid var(--ink);padding:14px 0 0;margin-bottom:30px}
+:root[data-theme="dark"] .sh{border-top-color:var(--ink)}
+h2{letter-spacing:-.035em}
+.chip{border-radius:0;text-transform:uppercase;letter-spacing:.08em;font-size:11px;border-color:var(--ink)}
+.chip.on{background:var(--ink);color:var(--bg)}
+
+/* project cards */
+.grid{counter-reset:c;gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+:root[data-theme="dark"] .grid{border-color:var(--line)}
+.card{counter-increment:c;border-radius:0;border:0;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--card)}
+:root[data-theme="dark"] .card{border-right-color:var(--line);border-bottom-color:var(--line)}
+.card:hover{transform:none;border-color:var(--ink);box-shadow:inset 0 4px 0 var(--coral)}
+:root[data-theme="dark"] .card:hover{border-color:var(--line)}
+.th{position:relative;border-bottom:1px solid var(--ink)}
+:root[data-theme="dark"] .th{border-bottom-color:var(--line)}
+.th::after{content:'P-' counter(c,decimal-leading-zero);position:absolute;top:0;left:0;background:var(--ink);color:var(--bg);font:500 11px var(--mono);letter-spacing:.1em;padding:3px 10px}
+.card h3{letter-spacing:-.02em}
+.tags span{border-radius:0;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+.card .go{text-transform:uppercase;letter-spacing:.1em;font-size:12px;border-bottom:2px solid var(--coral);align-self:flex-start;text-decoration:none;color:var(--ink)}
+.card .go:hover{color:var(--teal);border-color:var(--teal)}
+
+/* thesis */
+.pill{border-radius:0;letter-spacing:.08em}
+.item{border-left-width:2px;padding-left:14px}
+.panel{border-radius:0;border-color:var(--ink);padding:18px 20px}
+:root[data-theme="dark"] .panel{border-color:var(--line)}
+.panel h4{letter-spacing:.14em;border-bottom:1px solid var(--line);padding-bottom:8px}
+.chart .bar{rx:0}
+.media{gap:10px}
+.media figure{border-radius:0;border-color:var(--ink)}
+:root[data-theme="dark"] .media figure{border-color:var(--line)}
+.media figure.big{border-width:3px;border-color:var(--teal)}
+.media figcaption{text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+.vids video{border-radius:0;border:1px solid var(--ink)}
+:root[data-theme="dark"] .vids video{border-color:var(--line)}
+
+/* about + contact */
+dl{border-top:2px solid var(--ink)}
+:root[data-theme="dark"] dl{border-top-color:var(--ink)}
+dt{letter-spacing:.12em;font-size:11px}
+.mail{border-bottom-width:4px;letter-spacing:-.03em}
+footer{border-top:3px solid var(--ink);text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+</head>
+<body>
+
+<header><div class="w nav">
+  <a class="brand" href="#top"><b>●</b> gracedave / 6dchair</a>
+  <nav><ul>
+    <li><a class="l" href="#projects" data-n="projects">Projects</a></li>
+    <li><a class="l" href="#thesis" data-n="thesis">Thesis</a></li>
+    <li><a class="l" href="#internship" data-n="internship">Internship</a></li>
+    <li><a class="l" href="#about" data-n="about">About Me</a></li>
+    <li><a class="l" href="#contact" data-n="contact">Contact</a></li>
+    <li><button class="tg" id="theme" aria-label="Toggle dark mode">Dark</button></li>
+  </ul></nav>
+</div></header>
+
+<main class="w" id="top">
+
+<section class="hero">
+  <div>
+    <div class="eye">Computer Scientist &amp; Programmer</div>
+    <h1>Gracedave</h1>
+    <div class="role">Software Development, Robotic Arm Research, Webots, Data Collection &amp; Analysis</div>
+    <p class="abs">I work across software development, robotics, and artificial intelligence: combining programming, hands-on experimentation, data collection, analysis, and data-driven evaluation to develop practical, technology-driven solutions.</p>
+    <div class="cta"><a class="b1" href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download Resume ↗</a><a class="b2" href="#projects">View projects</a><a class="b2" href="#contact">Contact</a></div>
+    <div class="status"><span class="dot"></span>Open to full-time roles &amp; research collaborations</div>
+  </div>
+  <div class="vp" aria-hidden="true"><div id="cv"></div><span class="a">SIM VIEWPORT · 6dchair</span><span class="c">drag to rotate</span><span class="d"><i>x</i> <i>y</i> <i>z</i></span></div>
+</section>
+
+<div class="kpi" role="list">
+  <div role="listitem"><b>300</b><span>demonstrations</span></div>
+  <div role="listitem"><b>200</b><span>autonomous trials</span></div>
+  <div role="listitem"><b>14<em>-D</em></b><span>state representation</span></div>
+  <div role="listitem"><b>0% <em>→</em> 60.5%</b><span>autonomous → grip-assisted success</span></div>
+</div>
+<div class="kn">Key figures from the thesis below.</div>
+
+<section class="sec" id="projects">
+  <div class="sh"><div><div class="eye">01 / Projects</div><h2>Selected Work</h2></div>
+    <div class="chips" id="chips"><button class="chip on" data-f="all">All</button><button class="chip" data-f="Python">Python</button><button class="chip" data-f="TypeScript">TypeScript</button><button class="chip" data-f="JavaScript">JavaScript</button><button class="chip" data-f="C">C</button></div></div>
+  <div class="grid" id="grid">
+
+    <article class="card" data-l="Python TypeScript"><div class="th"><img src="images/p13.png" alt="6dMetrix: Sales Intelligence"></div><div class="cb">
+      <h3>6dMetrix: Sales Intelligence</h3>
+      <p>For small businesses that want sales reports without rebuilding spreadsheets by hand. It imports sales from CSV with a row-by-row validation preview, and one sale can hold several line items. It tracks stock automatically as sales come in, flags low and out-of-stock products, and generates dashboards plus downloadable PDF and CSV reports. Products and categories are fully user-defined, so it fits any type of goods, from motor parts to farm produce. The company name is configurable.</p>
+      <div class="tags"><span>Python</span><span>TypeScript</span><span>React</span><span>Vite</span><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>SQLite</span><span>Recharts</span><span>ReportLab</span></div>
+      <a class="go" href="https://6d-sales-auto-report.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+    <article class="card" data-l="C TypeScript"><div class="th"><img src="images/p5.png" alt="Prototype Zero"></div><div class="cb">
+      <h3>Prototype Zero (p.0)</h3>
+      <p>A custom imperative programming language with a C-based compiler and browser-based IDE. The project includes lexical analysis, parsing, semantic processing, code generation, and an interactive web interface for writing and compiling p.0 programs.</p>
+      <div class="tags"><span>C</span><span>TypeScript</span><span>Flex</span><span>Bison</span><span>React</span></div>
+      <a class="go" href="https://prototype-0-compiler-ide.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+    <article class="card" data-l="C TypeScript"><div class="th"><img src="images/p12.png" alt="6d CIMS: Customizable Inventory Mgt System"></div><div class="cb">
+      <h3>6dCIMS: Customizable Inventory Mgt System</h3>
+      <p>For orgs/warehouses to build their own inventory tables and fields instead of fitting its data into a fixed template. It tracks borrowed tools with partial returns, records consumed materials with attached proofs, and raises low-stock and overdue alerts. It runs offline as a web app or an Android app, with backup and restore.</p>
+      <div class="tags"><span>C</span><span>TypeScript</span><span>React</span><span>Vite</span><span>FastAPI</span><span>SQLAlchemy</span><span>SQLite</span><span>Capacitor</span></div>
+      <a class="go" href="https://6dcims.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+    <article class="card" data-l="Python TypeScript"><div class="th"><img src="images/p11.png" alt="StateFlow: Automata Simulator"></div><div class="cb">
+      <h3>StateFlow: Automata Simulator</h3>
+      <p>Converts natural-language descriptions into finite automata, then visualizes their state transitions and simulates user-provided input strings. It uses an AI-powered backend for language interpretation.</p>
+      <div class="tags"><span>Python</span><span>TypeScript</span><span>React</span><span>FastAPI</span><span>OpenAI</span><span>Vite</span></div>
+      <a class="go" href="https://stateflow-automata-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+    <article class="card" data-l="JavaScript"><div class="th"><img src="images/p8.png" alt="3D Projectile Simulator"></div><div class="cb">
+      <h3>3D Projectile Simulator</h3>
+      <p>A browser-based 3D physics simulator for projectile motion, with adjustable launch parameters, real-time trajectory visualization, and interactive camera controls.</p>
+      <div class="tags"><span>JavaScript</span><span>Three.js</span><span>Cannon-es</span><span>lil-gui</span><span>Vite</span></div>
+      <a class="go" href="https://first-lime-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+    <article class="card" data-l="JavaScript Python"><div class="th"><img src="images/p9.png" alt="Real-Time Face Anonymization"></div><div class="cb">
+      <h3>Real-Time Face Anonymization</h3>
+      <p>The initial prototype used Python, OpenCV, and Haar Cascade and was later redesigned using MediaPipe and Canvas to enable real-time, local processing without requiring a Python runtime or backend server.</p>
+      <div class="tags"><span>JavaScript</span><span>MediaPipe</span><span>Canvas API</span><span>Vite</span></div>
+      <a class="go" href="https://face-blur-app-mini-project.vercel.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></article>
+
+  </div>
+</section>
+
+<section class="sec" id="thesis">
+  <div class="sh"><div><div class="eye">02 / Thesis</div><h2>Research</h2></div></div>
+  <div class="thesis">
+    <div>
+      <h3 class="tt">Sim-to-Sim Transfer of Low-Dimensional Diffusion Policy for SO-ARM100 Pick-and-Place Using Webots Demonstrations</h3>
+      <span class="pill">Python</span>
+      <p>Evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. Developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</p>
+      <div class="item"><b>Build a pipeline without hardware!</b><div>Developed an accessible, reproducible Webots-based pipeline for diffusion-based robotic manipulation without requiring physical hardware.</div></div>
+      <div class="item"><b>Does the policy generalize?</b><div>Designed randomized environments to evaluate policy generalization across novel object/goal poses, workspace bounds, and robot states.</div></div>
+      <div class="item"><b>Still can't grasp it?</b><div>Identified grasp initiation as the primary failure point, revealing limitations of the 14D state representation for contact-rich manipulation.</div></div>
+    </div>
+    <div>
+      <div class="panel"><h4>Task success rate</h4>
+        <svg class="chart" viewBox="0 0 400 230" role="img" aria-label="Bar chart: fully autonomous success 0 percent, with manual grip assistance 60.5 percent">
+          <line x1="40" y1="20" x2="390" y2="20"/><line x1="40" y1="70" x2="390" y2="70"/><line x1="40" y1="120" x2="390" y2="120"/><line x1="40" y1="170" x2="390" y2="170"/><line x1="40" y1="200" x2="390" y2="200" style="stroke:var(--dim)"/>
+          <text x="32" y="24" text-anchor="end">100%</text><text x="32" y="124" text-anchor="end">50%</text><text x="32" y="204" text-anchor="end">0%</text>
+          <rect class="bar" x="90" y="196" width="90" height="4" rx="2" fill="var(--coral)"/><text class="v" x="135" y="186" text-anchor="middle">0%</text>
+          <rect class="bar" x="240" y="78" width="90" height="122" rx="4" fill="var(--teal)"/><text class="v" x="285" y="68" text-anchor="middle">60.5%</text>
+          <text x="135" y="220" text-anchor="middle">Fully autonomous</text><text x="285" y="220" text-anchor="middle">Grip-assisted</text>
+        </svg>
+        <div class="cap">Autonomous result is from 200 trials; the grip-assisted value is the mean success rate.</div></div>
+      <div class="media">
+        <figure><img src="gifs/0.gif" alt="Thesis experiment 2"><figcaption>Experiment 2</figcaption></figure>
+        <figure><img src="gifs/1.gif" alt="Thesis experiment 3"><figcaption>Experiment 3</figcaption></figure>
+        <figure class="big"><img src="gifs/teleop.gif" alt="Thesis experiment 1"><figcaption>Experiment 1</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec int" id="internship">
+  <div class="sh"><div><div class="eye">03 / Internship</div><h2>Internship Highlights</h2></div></div>
+  <div class="vids">
+    <video autoplay muted loop playsinline><source src="gifs/ih1-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih7-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih3-compressed2.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline><source src="gifs/ih2-compressed2.mp4" type="video/mp4"></video>
+  </div>
+  <p>Hands-on robotics internship involving RoArm-M2 teleoperation, push and pick-and-place behaviors, data collection, and experimental evaluation at the AI &amp; Robotics Laboratory (AIRLAB).</p>
+</section>
+
+<section class="sec" id="about">
+  <div class="sh"><div><div class="eye">04 / About</div><h2>About Me</h2></div></div>
+  <div class="about">
+    <p>Hi! I'm Gracedave, a Computer Science graduate with experience in software development, artificial intelligence, robotics, and experimental research. My work involves programming, data collection and analysis, robotic experimentation, and systematic evaluation of technical systems. I enjoy solving technical problems through structured experimentation and developing practical, testable solutions to real-world problems.</p>
+    <dl>
+      <div><dt>Education</dt><dd>Caraga State University - Main Campus, 2026<br><strong>Cum Laude</strong></dd></div>
+      <div><dt>Languages</dt><dd>C, Python, TypeScript, JavaScript</dd></div>
+      <div><dt>Focus</dt><dd>Software Development / Robotic Manipulation / Imitation Learning / Data Collection &amp; Analysis / Experimental Research</dd></div>
+      <div><dt>Based in</dt><dd>Philippines</dd></div>
+      <div><dt>Resume</dt><dd><a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">Download PDF ↗</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="sh"><div><div class="eye">05 / Contact</div><h2>Reach me</h2></div></div>
+  <p style="max-width:62ch">Open to full-time roles and research collaborations. The fastest way to reach me is email — I'll get back to you as soon as I can. Thank you. Have a nice day! :)</p>
+  <div class="row"><a class="mail" href="mailto:gracedave.work@gmail.com" id="emailLink">gracedave.work@gmail.com</a><button class="b2" id="copy" style="cursor:pointer">or Copy</button></div>
+  <a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+</section>
+
+<footer><span>© 2026 Gracedave T. (6dchair)</span><a href="#top">Back to top ↑</a></footer>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),root=document.documentElement;
+
+/* theme */
+const tb=$('#theme'),lab=()=>tb.textContent=root.dataset.theme==='dark'?'Light':'Dark';lab();
+tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('theme',n);}catch(e){}lab();});
+
+/* project filter */
+const cards=[...document.querySelectorAll('#grid .card')];
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));
+  const f=b.dataset.f;cards.forEach(c=>c.classList.toggle('hide',f!=='all'&&!c.dataset.l.split(' ').includes(f)));});
+
+/* copy email */
+$('#copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText($('#emailLink').textContent.trim());e.target.textContent='Copied!';}catch(_){e.target.textContent='Copy failed';}setTimeout(()=>e.target.textContent='or Copy',1600);});
+
+/* scrollspy */
+const links=document.querySelectorAll('nav a.l');
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.dataset.n===e.target.id));}),{rootMargin:'-40% 0px -55% 0px'});
+['projects','thesis','internship','about','contact'].forEach(id=>spy.observe($('#'+id)));
+
+/* glossy 6dchair in the sim viewport */
+(function(){
+  const box=$('#cv');if(!box||typeof THREE==='undefined')return;
+  const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1.5,.1,100);cam.position.z=12;
+  const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio||1,2));box.appendChild(r.domElement);
+  scene.add(new THREE.AmbientLight(0xffffff,.55));const dl=new THREE.DirectionalLight(0xffffff,.95);dl.position.set(3,5,8);scene.add(dl);
+  const g=new THREE.Group();scene.add(g);let tw=9.5,drag=false,px=0,py=0;const v={x:0,y:.012};
+  box.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;});
+  addEventListener('pointermove',e=>{if(!drag)return;v.y=(e.clientX-px)*.012;v.x=(e.clientY-py)*.012;px=e.clientX;py=e.clientY;});
+  addEventListener('pointerup',()=>drag=false);addEventListener('pointercancel',()=>drag=false);
+  const size=()=>{const w=box.clientWidth,h=box.clientHeight;if(!w||!h)return;r.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();g.scale.setScalar(Math.min(1.7,9.94*cam.aspect*.82/tw));};
+  size();addEventListener('resize',size);
+  (function loop(){requestAnimationFrame(loop);if(!calm){if(!drag){v.x+=(0-v.x)*.03;v.y+=(.012-v.y)*.03;}g.rotation.y+=v.y;g.rotation.x+=v.x;}r.render(scene,cam);})();
+  if(THREE.FontLoader&&THREE.TextGeometry)new THREE.FontLoader().load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json',f=>{
+    const o={font:f,size:1.7,height:.6,curveSegments:14,bevelEnabled:true,bevelThickness:.08,bevelSize:.05,bevelSegments:4};let x=0,h=0;
+    const mat=new THREE.MeshPhongMaterial({color:0xE8466A,shininess:90,specular:0xffffff});
+    for(const c of '6dchair'){const geo=new THREE.TextGeometry(c,o);geo.computeBoundingBox();const m=new THREE.Mesh(geo,mat);m.position.x=x;g.add(m);x+=geo.boundingBox.max.x-geo.boundingBox.min.x+.14;h=geo.boundingBox.max.y-geo.boundingBox.min.y;}
+    tw=x-.14;g.children.forEach(m=>{m.position.x-=tw/2;m.position.y-=h/2;});size();
+  });
+})();
+</script>
+</body>
+</html>
