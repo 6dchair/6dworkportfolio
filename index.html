@@ -186,7 +186,7 @@ table.sp{border-collapse:collapse;width:100%;background:var(--tile)}
   <div>
     <div class="lr"><span class="aka">(aka)</span><div class="logo" aria-label="6dchair"><span>6</span><span>d</span><span>c</span><span>h</span><span>a</span><span>i</span><span>r</span></div></div>
     <div class="jp" lang="ja">ポートフォリオ</div>
-    <!-- <div class="tag">Software, robotics and data analysis: the portfolio of Gracedave T.</div> -->
+    <!-- <div class="tag">Software, robotics and data analysis: the portfolio of Gracedave</div> -->
   </div>
   <div class="rt">
     <div class="mini"><a href="#top">home</a> | <a href="dox/6dCV.pdf" target="_blank" rel="noopener noreferrer">resume</a> | <a href="#cats">site map</a> | <a href="https://github.com/6dchair-uni" target="_blank" rel="noopener noreferrer">github0</a> | <a href="https://github.com/6dchair" target="_blank" rel="noopener noreferrer">github1</a> | <button class="mode" id="theme">night mode</button></div>
@@ -220,6 +220,12 @@ table.sp{border-collapse:collapse;width:100%;background:var(--tile)}
     <li><a href="#thesis">Thesis</a></li><li><a href="#internship">Internship</a></li><li><a href="#about">About Me</a></li><li><a href="#contact">Contact</a></li></ul>
     <a class="all" href="#projects">see all projects</a></div>
   <div class="box"><h3>Languages</h3><ul><li class="n">C</li><li class="n">Python</li><li class="n">TypeScript</li><li class="n">JavaScript</li></ul></div>
+
+    <div class="box" id="samples"><h3>Data Analysis Work Samples</h3><ul>
+    <li><a href="dox/a-Nventory_data_analysis.pdf" target="_blank" rel="noopener noreferrer">1) a-Nventory: System Design, Analysis, and Proposal</a></li>
+    <!-- <li class="n">27 respondents · ratings · open-ended themes</li> -->
+    <li><a href="dox/thesis_analysis.pdf" target="_blank" rel="noopener noreferrer">2) Policy Inference Results and Performance Analysis</a></li>
+    <!-- <li class="n">250 trials · success rates · confidence intervals</li></ul></div> -->
 </aside>
 
 <main>
@@ -293,15 +299,15 @@ table.sp{border-collapse:collapse;width:100%;background:var(--tile)}
   <div class="in">
     <div class="fig" role="list" aria-label="Key figures from the thesis">
       <div role="listitem"><b>300</b><span>demonstrations</span></div>
-      <div role="listitem"><b>200</b><span>autonomous trials</span></div>
+      <div role="listitem"><b>250</b><span>autonomous trials</span></div>
       <div role="listitem"><b>14-D</b><span>state representation</span></div>
-      <div role="listitem"><b>0% → 60.5%</b><span>autonomous → grip-assisted</span></div>
+      <div role="listitem"><b>0% → 66.4%</b><span>autonomous → grip-assisted</span></div>
     </div>
     <div class="th2">
       <div>
         <h2 class="ttl">Sim-to-Sim Transfer of Low-Dimensional Diffusion Policy for SO-ARM100 Pick-and-Place Using Webots Demonstrations</h2>
         <span class="py">Python</span>
-        <p><b class="lead">Overview</b>For my undergrad thesis, I evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. I developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 60.5% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</p>
+        <p><b class="lead">Overview</b>For my undergrad thesis, I evaluated a low-dimensional Diffusion Policy for SO-ARM100 pick-and-place in Webots, focusing on its ability to generalize to novel simulated environments. I developed the experimental pipeline for teleoperated data collection, randomized dataset generation, model training, and evaluation using 300 demonstrations and a 14-dimensional state representation. Across 200 fully autonomous trials, the policy achieved 0% success due to grasp-initiation failures, while manual grip assistance enabled a 66.4% mean success rate, indicating that the learned policy could execute transport and placement but struggled with contact-rich grasping. <a href="https://docs.google.com/document/d/1x1vNp7CVLZzQg2gFelXqy4YjuYLe3Bvc/edit?usp=sharing&amp;ouid=100281943988116773407&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read the thesis</a> or <a href="https://github.com/6dchair-uni/sim2sim-dp-soarm" target="_blank" rel="noopener noreferrer">view the repository</a>.</p>
         <div class="item"><b>Build a pipeline without hardware!</b><div>Developed an accessible, reproducible Webots-based pipeline for diffusion-based robotic manipulation without requiring physical hardware.</div></div>
         <div class="item"><b>Does the policy generalize?</b><div>Designed randomized environments to evaluate policy generalization across novel object/goal poses, workspace bounds, and robot states.</div></div>
         <div class="item"><b>Still can't grasp it?</b><div>Identified grasp initiation as the primary failure point, revealing limitations of the 14D state representation for contact-rich manipulation.</div></div>
@@ -311,11 +317,11 @@ table.sp{border-collapse:collapse;width:100%;background:var(--tile)}
       <figure class="nf"><img src="images/state2.png" alt="Trial results" loading="lazy"><figcaption>Dataset storage structure</figcaption></figure>
       </div>
       <div class="chartbox"><h4>Task success rate</h4>
-        <svg viewBox="0 0 330 220" role="img" aria-label="Bar chart: fully autonomous success 0 percent; with manual grip assistance 60.5 percent">
+        <svg viewBox="0 0 330 220" role="img" aria-label="Bar chart: fully autonomous success 0 percent; with manual grip assistance 66.4 percent">
           <line x1="44" y1="18" x2="322" y2="18"/><line x1="44" y1="59" x2="322" y2="59"/><line x1="44" y1="100" x2="322" y2="100"/><line x1="44" y1="141" x2="322" y2="141"/><line x1="44" y1="182" x2="322" y2="182" style="stroke:var(--dim)"/>
           <text x="38" y="22" text-anchor="end">100%</text><text x="38" y="63" text-anchor="end">75%</text><text x="38" y="104" text-anchor="end">50%</text><text x="38" y="145" text-anchor="end">25%</text><text x="38" y="186" text-anchor="end">0%</text>
           <line x1="76" y1="182" x2="156" y2="182" style="stroke:#B23A3A;stroke-width:2"/><text class="v" x="116" y="174" text-anchor="middle">0%</text>
-          <rect x="204" y="82.78" width="80" height="99.22" fill="#24508F"/><text class="v" x="244" y="74.78" text-anchor="middle">60.5%</text>
+          <rect x="204" y="82.78" width="80" height="99.22" fill="#24508F"/><text class="v" x="244" y="74.78" text-anchor="middle">66.4%</text>
           <text x="116" y="204" text-anchor="middle">Fully autonomous</text><text x="244" y="204" text-anchor="middle">Grip-assisted</text>
         </svg>
         <div class="cap">The policy achieved 0% success rate on fully-autonomous mode; the failure is due to inability of the gripper to hold the object.</div></div>
